@@ -102,7 +102,7 @@ struct AuthView: View {
                 
                 Spacer(minLength: 30)
         }
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // чтобы элементы не вылазили за фрейм
+            .frame(maxWidth: .infinity, maxHeight: .infinity) 
             .background(
                 Image("Pizza")
                     .renderingMode(.original)
