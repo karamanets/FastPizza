@@ -16,8 +16,10 @@ struct MainTabBar: View {
                 .tabItem {
                     Image(systemName: "menucard.fill")
                     Text("Catalog")
+                        
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
+                
                 
             CartView()
                 .tabItem {

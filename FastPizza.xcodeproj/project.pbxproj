@@ -19,6 +19,7 @@
 		2CCCBDF72972E95A00C087FD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDF62972E95A00C087FD /* ProfileView.swift */; };
 		2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDFB2972EB0600C087FD /* Product.swift */; };
 		2CCCBDFE2972ECDE00C087FD /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDFD2972ECDE00C087FD /* ProductCell.swift */; };
+		2CEEF007297ACBE600D99717 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		2CCCBDF62972E95A00C087FD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2CCCBDFB2972EB0600C087FD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		2CCCBDFD2972ECDE00C087FD /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				2CC01DA72979857A0037819E /* CatalogViewModel.swift */,
+				2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				2CCCBDE52972D11700C087FD /* AuthView.swift in Sources */,
 				2CCCBDF32972E93800C087FD /* CatalogView.swift in Sources */,
 				2CCCBDE32972D11700C087FD /* FastPizzaApp.swift in Sources */,
+				2CEEF007297ACBE600D99717 /* ProductDetailViewModel.swift in Sources */,
 				2CCCBDF72972E95A00C087FD /* ProfileView.swift in Sources */,
 				2CCCBDFE2972ECDE00C087FD /* ProductCell.swift in Sources */,
 				2CCCBDF52972E94300C087FD /* CartView.swift in Sources */,
