@@ -21,7 +21,7 @@ struct MainTabBar: View {
                 .toolbarBackground(.hidden, for: .tabBar)
                 
                 
-            CartView()
+            CartView(viewModel: CartViewModel())
                 .tabItem {
                     Image(systemName: "cart.fill")
                     Text("Cart")

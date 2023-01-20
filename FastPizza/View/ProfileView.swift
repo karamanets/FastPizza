@@ -10,8 +10,20 @@ import SwiftUI
 struct ProfileView: View {
     
     var body: some View {
-        
-        Text("Profile")
+        NavigationStack {
+            
+            Text("Profile")
+            
+            
+            
+            
+            
+            
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(LinearGradient(colors: [Color.brown, Color.orange],
+                                           startPoint: .bottomLeading,
+                                           endPoint: .topTrailing).opacity(0.7))
+        }
     }
 }
 

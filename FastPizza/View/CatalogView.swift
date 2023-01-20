@@ -29,11 +29,7 @@ struct CatalogView: View {
                                 ProductCell(product: item)
                                     .foregroundColor(.black)
                             }
-
-                            
-                            
                         }
-                       
                     }
                     .padding(9)
                 }

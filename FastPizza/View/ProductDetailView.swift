@@ -13,36 +13,74 @@ struct ProductDetailView: View {
     
     var viewModel: ProductDetailViewModel
     
+    @State private var size = "Medium"
+    @State private var count = 1
+    
     var body: some View {
         
         NavigationStack {
             VStack {
-                
                 VStack {
                     Image(viewModel.product.imageUrl)
                         .renderingMode(.original)
                         .resizable()
                         .scaledToFit()
-                        .frame(maxWidth: .infinity, maxHeight: 250)
                         .cornerRadius(20)
+                        .frame(maxWidth: .infinity, maxHeight: 250)
+                        .shadow(radius: 3,x: 3,y: 3)
                 }
-                .padding()
-            
+                
                 HStack {
                     Text("\(viewModel.product.title):")
                         .font(.system(size: 25) .monospaced())
                     Spacer()
-                    Text("\(viewModel.product.price) $")
+                    Text("\(viewModel.getPrice(size: size)) $")
                         .font(.system(size: 25) .monospaced().bold())
                    
                 }
                 .padding(.horizontal, 50)
                 
                 HStack {
+                    Picker("", selection: $size) {
+                        ForEach(viewModel.sizes, id: \.self) { item in
+                            Text(item)
+                        }
+                        
+                    }
+                    .pickerStyle(.segmented)
+                }
+                .padding(.horizontal)
+                
+                HStack {
+                    Stepper(value: $count, in: 1...20) {
+                        Text("Amount:      \(count)")
+                            .font(.system(size: 22) .monospaced())
+                    }
+                }
+                .padding(.horizontal, 1)
+                .padding()
+                
+                HStack {
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color.orange)
                         .frame(width: 280, height: 2)
                 }
+                
+                HStack {
+                    Button {
+                        //
+                    } label: {
+                        Text("Add to cart")
+                            .foregroundColor(.black)
+                            .font(.system(size: 18) .bold())
+                            .padding(.horizontal)
+                            .padding()
+                            .background(Color.white.opacity(0.9))
+                            .cornerRadius(14)
+                            .shadow(radius: 3,x: 3,y: 3)
+                    }
+                }
+                .padding(.top, 5)
                 
                 HStack {
                     Text(viewModel.product.description)
@@ -57,15 +95,16 @@ struct ProductDetailView: View {
                 goBack()
             } label: {
                 Image(systemName: "arrowshape.turn.up.backward")
-                    .font(.system(size: 29) .bold())
+                    .font(.system(size: 24) .bold())
                     .foregroundColor(.orange)
-                    .padding(.all, 20)
-                    .background(Color.white.opacity(0.5))
+                    .padding(.all, 10)
+                    .background(Color.white.opacity(0.9))
                     .cornerRadius(50)
             }
             }
             .padding(.top, 30)
             .navigationTitle("Detail")
+            .navigationBarTitleDisplayMode(.inline)
             
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(LinearGradient(colors: [Color.brown, Color.orange],

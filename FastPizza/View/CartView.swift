@@ -9,14 +9,22 @@ import SwiftUI
 
 struct CartView: View {
     
+    var viewModel: CartViewModel
+    
     var body: some View {
-        
-        Text("Card")
+        NavigationStack {
+            
+            Text("Card")
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(LinearGradient(colors: [Color.brown, Color.orange],
+                                           startPoint: .bottomLeading,
+                                           endPoint: .topTrailing).opacity(0.7))
+        }
     }
 }
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView()
+        CartView(viewModel: CartViewModel())
     }
 }

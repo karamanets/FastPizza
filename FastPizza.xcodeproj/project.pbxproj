@@ -20,6 +20,8 @@
 		2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDFB2972EB0600C087FD /* Product.swift */; };
 		2CCCBDFE2972ECDE00C087FD /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDFD2972ECDE00C087FD /* ProductCell.swift */; };
 		2CEEF007297ACBE600D99717 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */; };
+		2CEEF009297B16B700D99717 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEF008297B16B700D99717 /* Position.swift */; };
+		2CEEF00D297B17A100D99717 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEF00C297B17A100D99717 /* CartViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		2CCCBDFB2972EB0600C087FD /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		2CCCBDFD2972ECDE00C087FD /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
+		2CEEF008297B16B700D99717 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		2CEEF00C297B17A100D99717 /* CartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,7 @@
 			children = (
 				2CC01DA72979857A0037819E /* CatalogViewModel.swift */,
 				2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */,
+				2CEEF00C297B17A100D99717 /* CartViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -114,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				2CCCBDFB2972EB0600C087FD /* Product.swift */,
+				2CEEF008297B16B700D99717 /* Position.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,6 +204,8 @@
 			files = (
 				2CCCBDF12972E43700C087FD /* MainTabBar.swift in Sources */,
 				2CC01DAA2979A94F0037819E /* ProductDetailView.swift in Sources */,
+				2CEEF009297B16B700D99717 /* Position.swift in Sources */,
+				2CEEF00D297B17A100D99717 /* CartViewModel.swift in Sources */,
 				2CCCBDE52972D11700C087FD /* AuthView.swift in Sources */,
 				2CCCBDF32972E93800C087FD /* CatalogView.swift in Sources */,
 				2CCCBDE32972D11700C087FD /* FastPizzaApp.swift in Sources */,
