@@ -113,7 +113,6 @@ struct ProductDetailView: View {
             .toolbar(.hidden, for: .tabBar)
         }
         .navigationBarBackButtonHidden(true)
-        
     }
 }
 
