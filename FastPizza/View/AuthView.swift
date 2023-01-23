@@ -37,7 +37,6 @@ struct AuthView: View {
             }
                 
                 VStack (spacing: 25) {
-                    
                     TextField("Login", text: $login)
                         .font(.title2)
                         .padding(.all,14)
@@ -99,7 +98,6 @@ struct AuthView: View {
                 .cornerRadius(30)
                 .padding(.all, 20)
                 .scaleEffect(SingIn_Up ? 1.0 : 1.02 )
-                
                 Spacer(minLength: 30)
         }
             .frame(maxWidth: .infinity, maxHeight: .infinity) 

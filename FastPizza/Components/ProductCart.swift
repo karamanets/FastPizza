@@ -15,17 +15,16 @@ struct ProductCart: View {
         
         HStack  {
             Text("📌 \(viewModel.product.title)")
-                .font(.system(size: 20) .monospaced() )
+                .font(.title2 .monospaced() )
             Spacer()
             Text("\(viewModel.count)")
-                .font(.system(size: 20) .bold())
+                .font(.title3 .bold())
                 .padding(3)
                 .background(Color.orange.opacity(0.4))
                 .cornerRadius(50)
                 .padding(.horizontal)
-            
                 Text("\(viewModel.cost) $")
-                    .font(.system(size: 20) .bold())
+                    .font(.title3 .bold())
                     .frame(width: 45, alignment: .trailing)
         }
         .padding(.horizontal)

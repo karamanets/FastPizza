@@ -16,10 +16,8 @@ struct MainTabBar: View {
                 .tabItem {
                     Image(systemName: "menucard.fill")
                     Text("Catalog")
-                        
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
-                
                 
             CartView(viewModel: CartViewModel.shared)
                 .tabItem {
@@ -27,15 +25,14 @@ struct MainTabBar: View {
                     Text("Cart")
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
+            
             ProfileView()
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
-                
         }
-
     }
 }
 

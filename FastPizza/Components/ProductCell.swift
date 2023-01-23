@@ -14,6 +14,7 @@ struct ProductCell: View {
     var body: some View {
         
         ZStack (alignment: .topTrailing){
+            
             ZStack (alignment: .bottom) {
                 Image(product.imageUrl)
                     .resizable()
@@ -22,10 +23,9 @@ struct ProductCell: View {
                     .cornerRadius(20)
                 VStack (alignment: .leading){
                     Text(product.title)
-                        .font(.system(size: 19) .monospaced() )
-                    
+                        .font(.title2 .monospaced() )
                     Text("\(product.price) $")
-                        .font(.system(size: 22) .monospaced() .bold() )
+                        .font(.title2 .monospaced() .bold() )
                         .padding(.leading)
                 }
                 .padding(9)
@@ -34,7 +34,7 @@ struct ProductCell: View {
                 .cornerRadius(20)
             }
             .frame(width: 180, height: 240)
-            .shadow(color: .black.opacity(0.5), radius: 4, x: 3, y: 3)
+            .shadow(color: .black.opacity(0.9), radius: 4, x: 3, y: 3)
             
             Button {
                 // add dish
@@ -54,7 +54,7 @@ struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
         ProductCell(product: Product(id: "",
                                      title: "3 cheese",
-                                     imageUrl: "PizzaPR1",
+                                     imageUrl: "Pizza",
                                      price: 33,
                                      description: "The best optional"))
     }

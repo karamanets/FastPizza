@@ -12,37 +12,36 @@ struct CartView: View {
     @StateObject var viewModel: CartViewModel
     
     var body: some View {
-        ZStack (alignment: .bottom){
-            NavigationStack {
-                List (viewModel.positions) { position in
-                    HStack {
-                        ProductCart(viewModel: position)
-                        Spacer()
+        ZStack (alignment: .bottom) {
+                NavigationStack {
+                    List (viewModel.positions) { position in
+                        HStack {
+                            ProductCart(viewModel: position)
+                            Spacer()
+                        }
+                        .foregroundColor(.black)
+                        .padding(11)
+                        .background(Color("Color1").opacity(0.5))
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                        .swipeActions {
+                            Button {
+                                viewModel.positions.removeAll { item in
+                                    item.id == position.id
+                                }
+                            } label: {
+                                Text("Remove")
+                            }.tint(.red)
+                        }
                     }
-                    .foregroundColor(.black)
-                    .padding(11)
-                    .background(Color("Color3"))
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .listRowBackground(Color.clear)
-                    .listRowSeparator(.hidden)
-                    .swipeActions {
-                        Button {
-                            viewModel.positions.removeAll { item in
-                                item.id == position.id
-                            }
-                        } label: {
-                            Text("Remove")
-                        }.tint(.red)
-                    }
+                    .scrollContentBackground(.hidden)
+                    .background(Image("background") .offset(y: -7.4) )
+                    .listStyle(.plain)
+                    .navigationTitle("Cart")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbarBackground(.hidden, for: .navigationBar)
                 }
-                .padding(1)
-                .scrollContentBackground(.hidden)
-                .background(LinearGradient(colors: [Color.brown, Color.orange],
-                                           startPoint: .bottomLeading,
-                                           endPoint: .topTrailing))
-                .listStyle(.plain)
-                .navigationTitle("Cart")
-            }
             VStack {
                 HStack {
                     Text("AMOUND :")
@@ -91,16 +90,17 @@ struct CartView: View {
         .overlay(Group {
             if(viewModel.positions.isEmpty) {
                 ZStack() {
-                    LinearGradient(colors: [Color.brown, Color.orange],
-                                               startPoint: .bottomLeading,
-                                               endPoint: .topTrailing)
-                        .ignoresSafeArea()
+                    Image("background")
                     Text("Add some Pizza 🍕")
                         .foregroundColor(.black)
-                        .font(.title3 .monospaced() .bold())
+                        .font(.title .monospaced() .bold())
+                        .padding()
+                        .background(Color("Color1").opacity(0.4))
+                        .cornerRadius(30)
                 }
             }
         })
+        .ignoresSafeArea()
     }
 }
 struct CartView_Previews: PreviewProvider {

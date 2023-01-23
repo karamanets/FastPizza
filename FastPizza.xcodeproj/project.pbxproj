@@ -12,7 +12,6 @@
 		2CCB1F77297C035C00DF7CD5 /* ProductCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */; };
 		2CCCBDE32972D11700C087FD /* FastPizzaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDE22972D11700C087FD /* FastPizzaApp.swift */; };
 		2CCCBDE52972D11700C087FD /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDE42972D11700C087FD /* AuthView.swift */; };
-		2CCCBDE72972D11900C087FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCCBDE62972D11900C087FD /* Assets.xcassets */; };
 		2CCCBDEA2972D11900C087FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CCCBDE92972D11900C087FD /* Preview Assets.xcassets */; };
 		2CCCBDF12972E43700C087FD /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDF02972E43700C087FD /* MainTabBar.swift */; };
 		2CCCBDF32972E93800C087FD /* CatalogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCCBDF22972E93800C087FD /* CatalogView.swift */; };
@@ -26,13 +25,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C35B687297EE1B1005CAB97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC01DA72979857A0037819E /* CatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModel.swift; sourceTree = "<group>"; };
 		2CC01DA92979A94F0037819E /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCart.swift; sourceTree = "<group>"; };
 		2CCCBDDF2972D11700C087FD /* FastPizza.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastPizza.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CCCBDE22972D11700C087FD /* FastPizzaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastPizzaApp.swift; sourceTree = "<group>"; };
 		2CCCBDE42972D11700C087FD /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
-		2CCCBDE62972D11900C087FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CCCBDE92972D11900C087FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2CCCBDF02972E43700C087FD /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		2CCCBDF22972E93800C087FD /* CatalogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogView.swift; sourceTree = "<group>"; };
@@ -81,7 +80,6 @@
 				2CCCBDFA2972EAEA00C087FD /* Model */,
 				2CCCBDFF2972ED0200C087FD /* Components */,
 				2CCCBDE82972D11900C087FD /* Preview Content */,
-				2CCCBDE62972D11900C087FD /* Assets.xcassets */,
 			);
 			path = FastPizza;
 			sourceTree = "<group>";
@@ -89,6 +87,7 @@
 		2CCCBDE82972D11900C087FD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				2C35B687297EE1B1005CAB97 /* Assets.xcassets */,
 				2CCCBDE92972D11900C087FD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -194,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CCCBDEA2972D11900C087FD /* Preview Assets.xcassets in Resources */,
-				2CCCBDE72972D11900C087FD /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

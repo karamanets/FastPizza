@@ -13,16 +13,14 @@ struct ProfileView: View {
         NavigationStack {
             
             Text("Profile")
-            
-            
-            
-            
-            
-            
+                .foregroundColor(.black)
+                .font(.title3.bold())
+                .padding()
+                .background(Color("Color1").opacity(0.5))
+                .cornerRadius(30)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(LinearGradient(colors: [Color.brown, Color.orange],
-                                           startPoint: .bottomLeading,
-                                           endPoint: .topTrailing))
+                .background(Image("background"))
+                .ignoresSafeArea()
         }
     }
 }

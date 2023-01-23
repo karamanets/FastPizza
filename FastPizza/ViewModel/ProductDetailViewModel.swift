@@ -12,7 +12,6 @@ class ProductDetailViewModel: ObservableObject {
     @Published var product: Product
     @Published var sizes = ["Small","Medium","Large"]
     
-    
     init(product: Product) {
         self.product = product
     }

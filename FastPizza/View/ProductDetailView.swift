@@ -19,8 +19,11 @@ struct ProductDetailView: View {
     var body: some View {
         
         NavigationStack {
+            
             VStack {
+                
                 VStack {
+                    Spacer()
                     Image(viewModel.product.imageUrl)
                         .renderingMode(.original)
                         .resizable()
@@ -32,11 +35,12 @@ struct ProductDetailView: View {
                 
                 HStack {
                     Text("\(viewModel.product.title):")
-                        .font(.system(size: 25) .monospaced())
+                        .font(.title .monospaced())
+                        .foregroundColor(Color("Color1"))
                     Spacer()
                     Text("\(viewModel.getPrice(size: size)) $")
-                        .font(.system(size: 25) .monospaced().bold())
-                   
+                        .font(.title .monospaced().bold())
+                        .foregroundColor(Color("Color1"))
                 }
                 .padding(.horizontal, 50)
                 
@@ -53,9 +57,14 @@ struct ProductDetailView: View {
                 
                 HStack {
                     Stepper(value: $count, in: 1...20) {
+                        
                         Text("Amount:      \(count)")
                             .font(.system(size: 22) .monospaced())
+                            .foregroundColor(.black)
                     }
+                    .padding()
+                    .background( Color("Color1").opacity(0.6))
+                    .cornerRadius(30)
                 }
                 .padding(.horizontal, 1)
                 .padding()
@@ -92,6 +101,7 @@ struct ProductDetailView: View {
                     Text(viewModel.product.description)
                         .lineLimit(10)
                         .font(.system(size: 20) .monospaced() .bold() .italic())
+                        .foregroundColor(Color("Color1"))
                 }
                 .padding()
                 .padding(.top, 10)
@@ -105,17 +115,14 @@ struct ProductDetailView: View {
                     .foregroundColor(.orange)
                     .padding(.all, 10)
                     .background(Color.white.opacity(0.9))
-                    .cornerRadius(50)
-            }
+                .cornerRadius(50) }
+                Spacer(minLength: 50)
             }
             .padding(.top, 30)
             .navigationTitle("Detail")
             .navigationBarTitleDisplayMode(.inline)
-            
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(LinearGradient(colors: [Color.brown, Color.orange],
-                                       startPoint: .bottomLeading,
-                                       endPoint: .topTrailing).opacity(0.7))
+            .background(Image("background"))
+            .ignoresSafeArea()
             .toolbar(.hidden, for: .tabBar)
         }
         .navigationBarBackButtonHidden(true)
@@ -128,7 +135,7 @@ struct ProductDetailView_Previews: PreviewProvider {
                             ProductDetailViewModel(product:
                                     Product(id: "",
                                         title: "3 cheese",
-                                        imageUrl: "PizzaPR1",
+                                        imageUrl: "pizza5",
                                         price: 33,
                                         description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend ")))
     }
