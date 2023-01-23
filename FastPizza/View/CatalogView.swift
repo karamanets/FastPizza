@@ -55,7 +55,7 @@ struct CatalogView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(LinearGradient(colors: [Color.brown, Color.orange],
                                        startPoint: .bottomLeading,
-                                       endPoint: .topTrailing).opacity(0.7))
+                                       endPoint: .topTrailing))
         }
         
     }

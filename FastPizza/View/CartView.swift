@@ -9,19 +9,41 @@ import SwiftUI
 
 struct CartView: View {
     
-    var viewModel: CartViewModel
+    @StateObject var viewModel: CartViewModel
     
     var body: some View {
-        
+        ZStack (alignment: .bottom){
             NavigationStack {
-                List {
-                    ForEach(viewModel.positions) { item in
-                       ProductCart(viewModel: item)
+                List (viewModel.positions) { position in
+                    HStack {
+                        ProductCart(viewModel: position)
+                        Spacer()
                     }
-            }
+                    .foregroundColor(.black)
+                    .padding(11)
+                    .background(Color("Color3"))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    .swipeActions {
+                        Button {
+                            viewModel.positions.removeAll { item in
+                                item.id == position.id
+                            }
+                        } label: {
+                            Text("Remove")
+                        }.tint(.red)
+                    }
+                }
+                .padding(1)
+                .scrollContentBackground(.hidden)
+                .background(LinearGradient(colors: [Color.brown, Color.orange],
+                                           startPoint: .bottomLeading,
+                                           endPoint: .topTrailing))
                 .listStyle(.plain)
                 .navigationTitle("Cart")
-                
+            }
+            VStack {
                 HStack {
                     Text("AMOUND :")
                         .font(.title3 .monospaced() .bold())
@@ -31,13 +53,11 @@ struct CartView: View {
                 }
                 .padding()
                 .padding(.horizontal)
-                
                 HStack {
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color.orange)
                         .frame(width: 280, height: 2)
                 }
-                
                 HStack {
                     Button {
                         //
@@ -51,7 +71,6 @@ struct CartView: View {
                             .cornerRadius(25)
                             .shadow(radius: 3,x: 3,y: 3)
                     }
-                    
                     Button {
                         //
                     } label: {
@@ -64,22 +83,29 @@ struct CartView: View {
                             .cornerRadius(25)
                             .shadow(radius: 3,x: 3,y: 3)
                     }
-
                 }
                 .padding(.vertical)
                 .padding(.bottom, 70)
+            }
         }
+        .overlay(Group {
+            if(viewModel.positions.isEmpty) {
+                ZStack() {
+                    LinearGradient(colors: [Color.brown, Color.orange],
+                                               startPoint: .bottomLeading,
+                                               endPoint: .topTrailing)
+                        .ignoresSafeArea()
+                    Text("Add some Pizza 🍕")
+                        .foregroundColor(.black)
+                        .font(.title3 .monospaced() .bold())
+                }
+            }
+        })
     }
 }
-
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView(viewModel: CartViewModel())
+        CartView(viewModel: CartViewModel.shared)
     }
 }
 
-
-//    .frame(maxWidth: .infinity, maxHeight: .infinity)
-//    .background(LinearGradient(colors: [Color.brown, Color.orange],
-//                               startPoint: .bottomLeading,
-//                               endPoint: .topTrailing).opacity(0.7))

@@ -16,7 +16,7 @@ struct ProductCart: View {
         HStack  {
             Text("📌 \(viewModel.product.title)")
                 .font(.system(size: 20) .monospaced() )
-            
+            Spacer()
             Text("\(viewModel.count)")
                 .font(.system(size: 20) .bold())
                 .padding(3)
@@ -24,17 +24,12 @@ struct ProductCart: View {
                 .cornerRadius(50)
                 .padding(.horizontal)
             
-                Image(viewModel.product.imageUrl)
-                    .resizable()
-                    .scaledToFit()
-                    .clipShape(RoundedRectangle(cornerRadius: 30))
-                    .frame(width: 70, height: 70)
-                
                 Text("\(viewModel.cost) $")
                     .font(.system(size: 20) .bold())
-                    .frame(width: 67, alignment: .trailing)
+                    .frame(width: 45, alignment: .trailing)
         }
         .padding(.horizontal)
+        .cornerRadius(20)
         .lineLimit(1)
     }
 }

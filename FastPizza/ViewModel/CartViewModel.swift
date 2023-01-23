@@ -10,6 +10,10 @@ import Foundation
 
 class CartViewModel: ObservableObject {
     
+    static let shared = CartViewModel()
+    
+    private init() {}
+    
     @Published var positions = [Position]()
     
     var cost: Int {

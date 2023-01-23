@@ -68,7 +68,13 @@ struct ProductDetailView: View {
                 
                 HStack {
                     Button {
-                        //
+                        var position = Position(id: UUID().uuidString,
+                                                product: viewModel.product,
+                                                count: self.count)
+                        position.product.price = viewModel.getPrice(size: size)
+                        
+                        CartViewModel.shared.addPosition(position: position)
+                        goBack()
                     } label: {
                         Text("Add to cart")
                             .foregroundColor(.black)
