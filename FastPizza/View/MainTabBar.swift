@@ -26,7 +26,7 @@ struct MainTabBar: View {
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
             
-            ProfileView()
+            ProfileView(viewModel: CartViewModel.shared)
                 .tabItem {
                     Image(systemName: "person")
                     Text("Profile")

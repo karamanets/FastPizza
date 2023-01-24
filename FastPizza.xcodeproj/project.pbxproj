@@ -99,9 +99,9 @@
 				2CCCBDE42972D11700C087FD /* AuthView.swift */,
 				2CCCBDF02972E43700C087FD /* MainTabBar.swift */,
 				2CCCBDF22972E93800C087FD /* CatalogView.swift */,
-				2CC01DA92979A94F0037819E /* ProductDetailView.swift */,
 				2CCCBDF42972E94300C087FD /* CartView.swift */,
 				2CCCBDF62972E95A00C087FD /* ProfileView.swift */,
+				2CC01DA92979A94F0037819E /* ProductDetailView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

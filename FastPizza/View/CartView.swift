@@ -12,7 +12,9 @@ struct CartView: View {
     @StateObject var viewModel: CartViewModel
     
     var body: some View {
+        
         ZStack (alignment: .bottom) {
+            
                 NavigationStack {
                     List (viewModel.positions) { position in
                         HStack {
@@ -38,25 +40,31 @@ struct CartView: View {
                     .scrollContentBackground(.hidden)
                     .background(Image("background") .offset(y: -7.4) )
                     .listStyle(.plain)
-                    .navigationTitle("Cart")
+                    .navigationTitle("Cart") 
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbarBackground(.hidden, for: .navigationBar)
                 }
+            
             VStack {
+                
                 HStack {
                     Text("AMOUND :")
                         .font(.title3 .monospaced() .bold())
+                        .foregroundColor(.orange)
                     Spacer()
                     Text("\(viewModel.cost) $")
                         .font(.title3 .monospaced() .bold())
+                        .foregroundColor(.orange)
                 }
                 .padding()
                 .padding(.horizontal)
+                
                 HStack {
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color.orange)
                         .frame(width: 280, height: 2)
                 }
+                
                 HStack {
                     Button {
                         //

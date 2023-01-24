@@ -4,7 +4,7 @@
 //
 //  Created by Alex Karamanets on 14.01.2023.
 //
-// section - refactoring
+
 import SwiftUI
 
 struct CatalogView: View {
@@ -16,25 +16,26 @@ struct CatalogView: View {
         NavigationStack {
             
             ScrollView {
-            
-            Section ("Popular") {
-                ScrollView (.horizontal, showsIndicators: false) {
-
-                    LazyHGrid(rows: layout, spacing: 16) {
-                        ForEach(CatalogViewModel.shared.popularProducts) { item in
-                            NavigationLink {
-                                let viewModel = ProductDetailViewModel(product: item)
-                                ProductDetailView(viewModel: viewModel)
-                            } label: {
-                                ProductCell(product: item)
-                                    .foregroundColor(.black)
+                
+                Section  {
+                    ScrollView (.horizontal, showsIndicators: false) {
+                        
+                        LazyHGrid(rows: layout, spacing: 16) {
+                            ForEach(CatalogViewModel.shared.popularProducts) { item in
+                                NavigationLink {
+                                    let viewModel = ProductDetailViewModel(product: item)
+                                    ProductDetailView(viewModel: viewModel)
+                                } label: {
+                                    ProductCell(product: item)
+                                        .foregroundColor(.black)
+                                }
                             }
                         }
+                        .padding(9)
                     }
-                    .padding(9)
                 }
-            }
-                Section ("Pizza List") {
+                .padding(.top, 40)
+                Section {
                     ScrollView (.vertical, showsIndicators: false) {
                         
                         LazyVGrid(columns: layout) {
@@ -50,6 +51,11 @@ struct CatalogView: View {
                         }
                         .padding()
                     }
+                } header: {
+                    Text("Popular")
+                        .foregroundColor(.orange)
+                        .font(.title3 .bold())
+                        .offset(y: -15)
                 }
             }
             .background(Image("background"))
