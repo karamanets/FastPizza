@@ -11,6 +11,7 @@
 		2C30BFEA29817CC8009C9072 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFE929817CC8009C9072 /* FirebaseAuth */; };
 		2C30BFEC29817CC8009C9072 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFEB29817CC8009C9072 /* FirebaseFirestore */; };
 		2C30BFEE29817CC8009C9072 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFED29817CC8009C9072 /* FirebaseStorage */; };
+		2C387C7929818492007CD921 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C387C7829818492007CD921 /* AuthService.swift */; };
 		2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC01DA72979857A0037819E /* CatalogViewModel.swift */; };
 		2CC01DAA2979A94F0037819E /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC01DA92979A94F0037819E /* ProductDetailView.swift */; };
 		2CCB1F77297C035C00DF7CD5 /* ProductCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C35B687297EE1B1005CAB97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C387C7829818492007CD921 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2CC01DA72979857A0037819E /* CatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModel.swift; sourceTree = "<group>"; };
 		2CC01DA92979A94F0037819E /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCart.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2C387C7A29818497007CD921 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2C387C7829818492007CD921 /* AuthService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		2CCCBDD62972D11700C087FD = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +97,7 @@
 				2CCCBDF92972EAB600C087FD /* ViewModel */,
 				2CCCBDFA2972EAEA00C087FD /* Model */,
 				2CCCBDFF2972ED0200C087FD /* Components */,
+				2C387C7A29818497007CD921 /* Services */,
 				2CCCBDE82972D11900C087FD /* Preview Content */,
 				2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */,
 			);
@@ -233,6 +244,7 @@
 				2CCCBDF72972E95A00C087FD /* ProfileView.swift in Sources */,
 				2CCCBDFE2972ECDE00C087FD /* ProductCell.swift in Sources */,
 				2CCCBDF52972E94300C087FD /* CartView.swift in Sources */,
+				2C387C7929818492007CD921 /* AuthService.swift in Sources */,
 				2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */,
 				2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */,
 			);

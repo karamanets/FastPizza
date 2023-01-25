@@ -11,12 +11,13 @@ struct AuthView: View {
     
     @State private var SingIn_Up = true
     
-    @State private var login     = ""
+    @State private var email     = ""
     @State private var password  = ""
     @State private var password2 = ""
     
-    @State private var message   = ""
-    @State private var alert     = false
+    @State private var alertMessage  = ""
+    @State private var alertMessage2 = ""
+    @State private var alert         = false
     
     @State private var isTabViewShow = false
 
@@ -37,7 +38,7 @@ struct AuthView: View {
             }
                 
                 VStack (spacing: 25) {
-                    TextField("Login", text: $login)
+                    TextField("Login", text: $email)
                         .font(.title2)
                         .padding(.all,14)
                         .padding(.horizontal, 30)
@@ -65,9 +66,24 @@ struct AuthView: View {
                             self.password = ""
                             self.isTabViewShow.toggle()
                         } else {
-                            print("SignUp") //Auth SignUo
-                            self.alert.toggle()
-                            
+                            guard password == password2 else {
+                                self.alertMessage = "Passwords are not equal 🦉"
+                                self.alertMessage2 = "Try again"
+                                self.alert.toggle()
+                                return
+                            }
+                            AuthService.shared.SignUp(email: self.email, password: self.password) { result in
+                                switch result {
+                                case .success(let user):
+                                    self.alertMessage = "Congratulated You're account was created with email \(user.email ?? "" )"
+                                    self.alertMessage2 = "Go to SignIn"
+                                    self.alert.toggle()
+                                case .failure(let error):
+                                    self.alertMessage = "\(error.localizedDescription)"
+                                    self.alertMessage2 = "Try again"
+                                    self.alert.toggle()
+                                }
+                            }
                         }
                     } label: {
                         Text(SingIn_Up ? "Sign In" : "Sign Up")
@@ -82,7 +98,7 @@ struct AuthView: View {
                     }
                     Button {
                         self.SingIn_Up.toggle()
-                        self.login = ""
+                        self.email = ""
                         self.password = ""
                         self.password2 = ""
                         
@@ -112,10 +128,10 @@ struct AuthView: View {
             .animation(Animation.interpolatingSpring(stiffness: 120, damping: 9), value: SingIn_Up)
             
             .alert(isPresented: $alert) {
-                Alert(title: Text("Congratulated"),
-                      message: Text("Let's Sign In"),
-                      dismissButton: .default(Text("Go in")) {
-                    self.login = ""
+                Alert(title: Text(""),
+                      message: Text(alertMessage),
+                      dismissButton: .default(Text(alertMessage2)) {
+                    self.email = ""
                     self.password = ""
                     self.password2 = ""
                     self.SingIn_Up.toggle() }) }

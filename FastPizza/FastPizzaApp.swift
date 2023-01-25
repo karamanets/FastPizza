@@ -7,9 +7,13 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 @main
 struct FastPizzaApp: App {
+    
+    @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
+    
     var body: some Scene {
         WindowGroup {
             AuthView()
