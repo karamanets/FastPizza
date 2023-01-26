@@ -12,6 +12,7 @@
 		2C30BFEC29817CC8009C9072 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFEB29817CC8009C9072 /* FirebaseFirestore */; };
 		2C30BFEE29817CC8009C9072 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFED29817CC8009C9072 /* FirebaseStorage */; };
 		2C387C7929818492007CD921 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C387C7829818492007CD921 /* AuthService.swift */; };
+		2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */; };
 		2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC01DA72979857A0037819E /* CatalogViewModel.swift */; };
 		2CC01DAA2979A94F0037819E /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC01DA92979A94F0037819E /* ProductDetailView.swift */; };
 		2CCB1F77297C035C00DF7CD5 /* ProductCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */; };
@@ -33,6 +34,8 @@
 		2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C35B687297EE1B1005CAB97 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C387C7829818492007CD921 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		2C387CCC298199F3007CD921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		2CC01DA72979857A0037819E /* CatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModel.swift; sourceTree = "<group>"; };
 		2CC01DA92979A94F0037819E /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCart.swift; sourceTree = "<group>"; };
@@ -100,6 +103,7 @@
 				2C387C7A29818497007CD921 /* Services */,
 				2CCCBDE82972D11900C087FD /* Preview Content */,
 				2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */,
+				2C387CCC298199F3007CD921 /* Info.plist */,
 			);
 			path = FastPizza;
 			sourceTree = "<group>";
@@ -132,6 +136,7 @@
 				2CC01DA72979857A0037819E /* CatalogViewModel.swift */,
 				2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */,
 				2CEEF00C297B17A100D99717 /* CartViewModel.swift */,
+				2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CCCBDF12972E43700C087FD /* MainTabBar.swift in Sources */,
+				2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */,
 				2CC01DAA2979A94F0037819E /* ProductDetailView.swift in Sources */,
 				2CEEF009297B16B700D99717 /* Position.swift in Sources */,
 				2CCB1F77297C035C00DF7CD5 /* ProductCart.swift in Sources */,
@@ -377,7 +383,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FastPizza/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = FastPizza/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -405,7 +411,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"FastPizza/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = FastPizza/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

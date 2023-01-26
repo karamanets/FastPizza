@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MainTabBar: View {
+    
+    var viewModel: MainTabBarViewModel
+    
     var body: some View {
         
         TabView {
@@ -33,12 +36,6 @@ struct MainTabBar: View {
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
         }
-    }
-}
-
-struct MainTabBar_Previews: PreviewProvider {
-    static var previews: some View {
-        MainTabBar()
     }
 }
 

@@ -62,9 +62,16 @@ struct AuthView: View {
                     }
                     Button {
                         if SingIn_Up {
-                            print("SignIn") // Auth SignIn
-                            self.password = ""
-                            self.isTabViewShow.toggle()
+                            AuthService.shared.SignIn(email: self.email, password: self.password) { result in
+                                switch result {
+                                case .success(_):
+                                    self.isTabViewShow.toggle()
+                                case .failure(let error) :
+                                    self.alertMessage = error.localizedDescription
+                                    self.alertMessage2 = "Try again"
+                                    self.alert.toggle()
+                                }
+                            }
                         } else {
                             guard password == password2 else {
                                 self.alertMessage = "Passwords are not equal 🦉"
@@ -75,7 +82,7 @@ struct AuthView: View {
                             AuthService.shared.SignUp(email: self.email, password: self.password) { result in
                                 switch result {
                                 case .success(let user):
-                                    self.alertMessage = "Congratulated You're account was created with email \(user.email ?? "" )"
+                                    self.alertMessage = "Congratulated You're account was created with email \(user.email ?? "Error" )"
                                     self.alertMessage2 = "Go to SignIn"
                                     self.alert.toggle()
                                 case .failure(let error):
@@ -128,16 +135,19 @@ struct AuthView: View {
             .animation(Animation.interpolatingSpring(stiffness: 120, damping: 9), value: SingIn_Up)
             
             .alert(isPresented: $alert) {
-                Alert(title: Text(""),
+                Alert(title: Text("Message"),
                       message: Text(alertMessage),
                       dismissButton: .default(Text(alertMessage2)) {
                     self.email = ""
                     self.password = ""
                     self.password2 = ""
-                    self.SingIn_Up.toggle() }) }
+                    }) }
         
             .fullScreenCover(isPresented: $isTabViewShow) {
-                MainTabBar()
+                
+                let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)
+                
+                MainTabBar(viewModel: user )
             }
     }
 }
