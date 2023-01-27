@@ -28,7 +28,7 @@ class AuthService {
                 
                 let dataUser = DataUser(id: result.user.uid, name: "", phone: 0, address: "")
                 
-                DatabaseService.shared.setUser(user: dataUser) { resultUser  in
+                DatabaseService.shared.setProfile(user: dataUser) { resultUser  in
                     switch resultUser {
                         
                     case .success(_):

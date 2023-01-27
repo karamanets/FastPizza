@@ -12,6 +12,8 @@ struct ProfileView: View {
     @ObservedObject var viewModel: CartViewModel
     @State private var alert = false
     
+    @StateObject var vm: ProfileViewModel
+    
     var body: some View {
         
         VStack (alignment: .center) {
@@ -28,7 +30,7 @@ struct ProfileView: View {
                     .foregroundColor(.orange.opacity(0.6))
                 
                 VStack {
-                    Text("Alexander Karamanets")
+                    TextField("Name", text: $vm.profile.name)
                         .foregroundColor(.black)
                         .font(.title3.bold())
                         .padding()
@@ -36,23 +38,34 @@ struct ProfileView: View {
                         .cornerRadius(30)
                         .lineLimit(1)
                     
-                    Text("+38 095-777-99-33")
-                        .foregroundColor(.black)
-                        .font(.title3.bold())
-                        .padding(5)
-                        .background(Color("Color1").opacity(0.5))
-                        .cornerRadius(30)
-                        .lineLimit(1)
+                    HStack {
+                        Text("+380")
+                            .foregroundColor(.black)
+                            .font(.title3.bold())
+                            .padding(5)
+                            .background(Color("Color1").opacity(0.5))
+                            .cornerRadius(30)
+                            .lineLimit(1)
+                        //MARK: Add mask to number
+                        TextField("Phone", value: $vm.profile.phone, format: .number)
+                            .foregroundColor(.black)
+                            .font(.title3.bold())
+                            .padding(5)
+                            .background(Color("Color1").opacity(0.5))
+                            .cornerRadius(30)
+                            .lineLimit(1)
+                    }
                 }
             }
             
             VStack {
-                Text("Cupertino, California, U.S. Infinite Loop Cupertino, CA 95014 ")
+                TextField("Address", text: $vm.profile.address)
                     .foregroundColor(.black)
                     .font(.title3.bold())
                     .padding()
                     .background(Color("Color1").opacity(0.5))
                     .cornerRadius(30)
+                    
             }
             .padding(.horizontal)
             .padding(.top)
@@ -101,7 +114,7 @@ struct ProfileView: View {
                 Button {
                     self.alert.toggle()
                 } label: {
-                    Text("Go out")
+                    Text("Exit app")
                         .foregroundColor(.black)
                         .font(.system(size: 18) .bold())
                         .padding(.horizontal)
@@ -122,11 +135,21 @@ struct ProfileView: View {
         }
         .background(Image("background"))
         .ignoresSafeArea()
+        .onSubmit { vm.setProfile() }
+        .onAppear { vm.getProfile() }
+            
+        
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(viewModel: CartViewModel.shared)
+        ProfileView(viewModel: CartViewModel.shared,
+                    vm: ProfileViewModel(profileViewModel:
+                                            DataUser(id: "",
+                                                     name: "Alexander Karamanets",
+                                                     phone: 777,
+                                                     address: "Cupertino, California, U.S. Infinite Loop Cupertino, CA 95014"
+)))
     }
 }
