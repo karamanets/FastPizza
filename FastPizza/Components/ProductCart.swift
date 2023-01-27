@@ -25,7 +25,7 @@ struct ProductCart: View {
                 .padding(.horizontal)
                 Text("\(viewModel.cost) $")
                     .font(.title3 .bold())
-                    .frame(width: 45, alignment: .trailing)
+                    .frame(width: 65, alignment: .trailing)
         }
         .padding(.horizontal)
         .cornerRadius(20)

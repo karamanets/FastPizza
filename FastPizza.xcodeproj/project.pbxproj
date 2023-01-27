@@ -13,6 +13,9 @@
 		2C30BFEE29817CC8009C9072 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFED29817CC8009C9072 /* FirebaseStorage */; };
 		2C387C7929818492007CD921 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C387C7829818492007CD921 /* AuthService.swift */; };
 		2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */; };
+		2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34742982CB4C0068AC56 /* DataUser.swift */; };
+		2C7B34772982CBDB0068AC56 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34762982CBDB0068AC56 /* DatabaseService.swift */; };
+		2C7B349B2983FBD00068AC56 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B349A2983FBD00068AC56 /* Test.swift */; };
 		2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC01DA72979857A0037819E /* CatalogViewModel.swift */; };
 		2CC01DAA2979A94F0037819E /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC01DA92979A94F0037819E /* ProductDetailView.swift */; };
 		2CCB1F77297C035C00DF7CD5 /* ProductCart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */; };
@@ -36,6 +39,9 @@
 		2C387C7829818492007CD921 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2C387CCC298199F3007CD921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
+		2C7B34742982CB4C0068AC56 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
+		2C7B34762982CBDB0068AC56 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		2C7B349A2983FBD00068AC56 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		2CC01DA72979857A0037819E /* CatalogViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewModel.swift; sourceTree = "<group>"; };
 		2CC01DA92979A94F0037819E /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCart.swift; sourceTree = "<group>"; };
@@ -72,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				2C387C7829818492007CD921 /* AuthService.swift */,
+				2C7B34762982CBDB0068AC56 /* DatabaseService.swift */,
+				2C7B349A2983FBD00068AC56 /* Test.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -146,6 +154,7 @@
 			children = (
 				2CCCBDFB2972EB0600C087FD /* Product.swift */,
 				2CEEF008297B16B700D99717 /* Position.swift */,
+				2C7B34742982CB4C0068AC56 /* DataUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -237,9 +246,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C7B34772982CBDB0068AC56 /* DatabaseService.swift in Sources */,
 				2CCCBDF12972E43700C087FD /* MainTabBar.swift in Sources */,
 				2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */,
 				2CC01DAA2979A94F0037819E /* ProductDetailView.swift in Sources */,
+				2C7B349B2983FBD00068AC56 /* Test.swift in Sources */,
 				2CEEF009297B16B700D99717 /* Position.swift in Sources */,
 				2CCB1F77297C035C00DF7CD5 /* ProductCart.swift in Sources */,
 				2CEEF00D297B17A100D99717 /* CartViewModel.swift in Sources */,
@@ -252,6 +263,7 @@
 				2CCCBDF52972E94300C087FD /* CartView.swift in Sources */,
 				2C387C7929818492007CD921 /* AuthService.swift in Sources */,
 				2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */,
+				2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */,
 				2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

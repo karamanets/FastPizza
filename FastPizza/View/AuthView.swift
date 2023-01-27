@@ -23,132 +23,135 @@ struct AuthView: View {
 
     var body: some View {
         
+        VStack {
+            Spacer(minLength: 60)
+            
             VStack {
-                Spacer(minLength: 60)
-                
-                VStack {
-                    Text(SingIn_Up ? "Sing In" : "Sing Up")
-                        .foregroundColor(.black)
-                        .font(.system(size: 27) .bold())
-                        .padding()
-                        .padding(.horizontal, 42)
-                        .background(Color("Color1"))
-                        .cornerRadius(30)
-                        .scaleEffect(SingIn_Up ? 1.0 : 1.2 )
+                Text(SingIn_Up ? "Sing In" : "Sing Up")
+                    .foregroundColor(.black)
+                    .font(.system(size: 27) .bold())
+                    .padding()
+                    .padding(.horizontal, 42)
+                    .background(Color("Color1"))
+                    .cornerRadius(30)
+                    .scaleEffect(SingIn_Up ? 1.0 : 1.2 )
             }
+            
+            VStack (spacing: 25) {
+                TextField("Login", text: $email)
+                    .font(.title2)
+                    .padding(.all,14)
+                    .padding(.horizontal, 30)
+                    .background(Color.white)
+                    .cornerRadius(30)
                 
-                VStack (spacing: 25) {
-                    TextField("Login", text: $email)
+                SecureField("Password", text: $password)
+                    .font(.title2)
+                    .padding(.all,14)
+                    .padding(.horizontal, 30)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                
+                if !SingIn_Up {
+                    SecureField("Password", text: $password2)
                         .font(.title2)
                         .padding(.all,14)
                         .padding(.horizontal, 30)
                         .background(Color.white)
                         .cornerRadius(30)
-                    
-                    SecureField("Password", text: $password)
-                        .font(.title2)
-                        .padding(.all,14)
-                        .padding(.horizontal, 30)
-                        .background(Color.white)
-                        .cornerRadius(30)
-                    
-                    if !SingIn_Up {
-                        SecureField("Password", text: $password2)
-                            .font(.title2)
-                            .padding(.all,14)
-                            .padding(.horizontal, 30)
-                            .background(Color.white)
-                            .cornerRadius(30)
-                    }
-                    Button {
-                        if SingIn_Up {
-                            AuthService.shared.SignIn(email: self.email, password: self.password) { result in
-                                switch result {
-                                case .success(_):
-                                    self.isTabViewShow.toggle()
-                                case .failure(let error) :
-                                    self.alertMessage = error.localizedDescription
-                                    self.alertMessage2 = "Try again"
-                                    self.alert.toggle()
-                                }
-                            }
-                        } else {
-                            guard password == password2 else {
-                                self.alertMessage = "Passwords are not equal 🦉"
+                }
+                Button {
+                    if SingIn_Up {
+                        AuthService.shared.SignIn(email: self.email, password: self.password) { result in
+                            switch result {
+                            case .success(_):
+                                self.isTabViewShow.toggle()
+                            case .failure(let error) :
+                                self.alertMessage = error.localizedDescription
                                 self.alertMessage2 = "Try again"
                                 self.alert.toggle()
-                                return
-                            }
-                            AuthService.shared.SignUp(email: self.email, password: self.password) { result in
-                                switch result {
-                                case .success(let user):
-                                    self.alertMessage = "Congratulated You're account was created with email \(user.email ?? "Error" )"
-                                    self.alertMessage2 = "Go to SignIn"
-                                    self.alert.toggle()
-                                case .failure(let error):
-                                    self.alertMessage = "\(error.localizedDescription)"
-                                    self.alertMessage2 = "Try again"
-                                    self.alert.toggle()
-                                }
                             }
                         }
-                    } label: {
-                        Text(SingIn_Up ? "Sign In" : "Sign Up")
-                            .foregroundColor(.black)
-                            .font(.system(size: 22))
-                            .padding(.all, 14)
-                            .padding(.horizontal, 30)
-                            .background(Color.orange)
-                            .cornerRadius(20)
-                            .opacity(0.8)
-                            .shadow(color: .black, radius: 3, x: 2, y: 3)
+                    } else {
+                        guard password == password2 else {
+                            self.alertMessage = "Passwords are not equal 🦉"
+                            self.alertMessage2 = "Try again"
+                            self.alert.toggle()
+                            return
+                        }
+                        AuthService.shared.SignUp(email: self.email, password: self.password) { result in
+                            switch result {
+                            case .success(let user):
+                                self.alertMessage = "Congratulated You're account was created with email \(user.email ?? "Error" )"
+                                self.alertMessage2 = "Go to SignIn"
+                                self.email = ""
+                                self.password = ""
+                                self.password2 = ""
+                                self.SingIn_Up.toggle()
+                                self.alert.toggle()
+                            case .failure(let error):
+                                self.alertMessage = "\(error.localizedDescription)"
+                                self.alertMessage2 = "Try again"
+                                self.alert.toggle()
+                            }
+                        }
                     }
-                    Button {
-                        self.SingIn_Up.toggle()
-                        self.email = ""
-                        self.password = ""
-                        self.password2 = ""
-                        
-                    } label: {
-                        Text(SingIn_Up ? "Registration" : "Back")
-                            .foregroundColor(.black)
-                            .opacity(0.9)
-                    }
+                } label: {
+                    Text(SingIn_Up ? "Sign In" : "Sign Up")
+                        .foregroundColor(.black)
+                        .font(.system(size: 22))
+                        .padding(.all, 14)
+                        .padding(.horizontal, 30)
+                        .background(Color.orange)
+                        .cornerRadius(20)
+                        .opacity(0.8)
+                        .shadow(color: .black, radius: 3, x: 2, y: 3)
                 }
-                .padding(.all, 20)
-                .padding(.vertical, 20)
-                .background(Color("Color2"))
-                .cornerRadius(30)
-                .padding(.all, 20)
-                .scaleEffect(SingIn_Up ? 1.0 : 1.02 )
-                Spacer(minLength: 30)
-        }
-            .frame(maxWidth: .infinity, maxHeight: .infinity) 
-            .background(
-                Image("Pizza")
-                    .renderingMode(.original)
-                    .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .blur(radius: SingIn_Up ? 0 : 4 ) )
-        
-            .animation(Animation.interpolatingSpring(stiffness: 120, damping: 9), value: SingIn_Up)
-            
-            .alert(isPresented: $alert) {
-                Alert(title: Text("Message"),
-                      message: Text(alertMessage),
-                      dismissButton: .default(Text(alertMessage2)) {
+                Button {
+                    self.SingIn_Up.toggle()
                     self.email = ""
                     self.password = ""
                     self.password2 = ""
-                    }) }
-        
-            .fullScreenCover(isPresented: $isTabViewShow) {
-                
-                let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)
-                
-                MainTabBar(viewModel: user )
+                    
+                } label: {
+                    Text(SingIn_Up ? "Registration" : "Back")
+                        .foregroundColor(.black)
+                        .opacity(0.9)
+                }
             }
+            .padding(.all, 20)
+            .padding(.vertical, 20)
+            .background(Color("Color2"))
+            .cornerRadius(30)
+            .padding(.all, 20)
+            .scaleEffect(SingIn_Up ? 1.0 : 1.02 )
+            Spacer(minLength: 30)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(
+            Image("Pizza")
+                .renderingMode(.original)
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+                .blur(radius: SingIn_Up ? 0 : 4 ) )
+        
+        .animation(Animation.interpolatingSpring(stiffness: 120, damping: 9), value: SingIn_Up)
+        
+        .alert(isPresented: $alert) {
+            Alert(title: Text("Message"),
+                  message: Text(alertMessage),
+                  dismissButton: .default(Text(alertMessage2)) {
+                self.email = ""
+                self.password = ""
+                self.password2 = ""
+            }) }
+        
+        .fullScreenCover(isPresented: $isTabViewShow) {
+            //MARK: add default value?
+            let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)
+            MainTabBar(viewModel: user )
+        }
     }
 }
 //                         🔱
