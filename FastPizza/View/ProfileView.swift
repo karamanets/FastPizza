@@ -145,7 +145,7 @@ struct ProfileView: View {
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(viewModel: CartViewModel.shared,
-                    vm: ProfileViewModel(profileViewModel:
+                    vm: ProfileViewModel(profile:
                                             DataUser(id: "",
                                                      name: "Alexander Karamanets",
                                                      phone: 777,

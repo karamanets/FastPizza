@@ -11,8 +11,8 @@ class ProfileViewModel: ObservableObject {
     
     @Published var profile: DataUser
     
-    init(profileViewModel: DataUser) {
-        self.profile = profileViewModel
+    init(profile: DataUser) {
+        self.profile = profile
     }
     
     func setProfile() {
