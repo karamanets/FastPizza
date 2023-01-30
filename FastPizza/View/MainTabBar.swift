@@ -21,7 +21,7 @@ struct MainTabBar: View {
                     Text("Catalog")
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
-                
+            
             CartView(viewModel: CartViewModel.shared)
                 .tabItem {
                     Image(systemName: "cart.fill")
@@ -29,15 +29,15 @@ struct MainTabBar: View {
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
             
-            ProfileView(viewModel: CartViewModel.shared, vm: ProfileViewModel(profile: DataUser(id: "",
-                                                                                                name: "",
-                                                                                                phone: 0,
-                                                                                                address: "")))
-                .tabItem {
-                    Image(systemName: "person")
-                    Text("Profile")
-                }
-                .toolbarBackground(.hidden, for: .tabBar)
+            ProfileView( vm: ProfileViewModel(profile: DataUser(id: "",
+                                                                name: "",
+                                                                phone: 0,
+                                                                address: "")))
+            .tabItem {
+                Image(systemName: "person")
+                Text("Profile")
+            }
+            .toolbarBackground(.hidden, for: .tabBar)
         }
     }
 }

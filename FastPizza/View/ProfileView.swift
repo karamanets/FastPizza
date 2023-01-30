@@ -9,9 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     
-    @ObservedObject var viewModel: CartViewModel
     @State private var alert = false
-    
     @StateObject var vm: ProfileViewModel
     
     var body: some View {
@@ -78,7 +76,7 @@ struct ProfileView: View {
             .padding(.top)
             
             VStack {
-                    if(viewModel.positions.isEmpty) {
+                if vm.orders.count == 0 {
                         List {
                             Text("Don't have any orders     🍕")
                                 .font(.title )
@@ -92,9 +90,9 @@ struct ProfileView: View {
                         .listStyle(.plain)
                         .scrollContentBackground(.hidden)
                     } else {
-                        List (viewModel.positions) { item in
+                        List (vm.orders) { item in
                         HStack {
-                            ProductCart(viewModel: item)
+                            OrderCell(order: item)
                             Spacer()
                         }
                         .foregroundColor(.black)
@@ -136,16 +134,16 @@ struct ProfileView: View {
         .background(Image("background"))
         .ignoresSafeArea()
         .onSubmit { vm.setProfile() }
-        .onAppear { vm.getProfile() }
-            
-        
+        .onAppear {
+            vm.getProfile()
+            vm.getOrders()
+        }
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(viewModel: CartViewModel.shared,
-                    vm: ProfileViewModel(profile:
+        ProfileView( vm: ProfileViewModel(profile:
                                             DataUser(id: "",
                                                      name: "Alexander Karamanets",
                                                      phone: 777,
