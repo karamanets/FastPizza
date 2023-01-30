@@ -84,4 +84,28 @@ class DatabaseService {
         }
         completion(.success(positions))
     }
+    
+    func getOrder(by userID: String?, completion: @escaping (Result<[Order], Error>) -> Void ) {
+        
+        self.orderReference.getDocuments {  qSnap, error in
+            
+            if let qSnap = qSnap {
+                var orders = [Order]()
+                for doc in qSnap.documents {
+                    if let userID = userID {
+                        if let order = Order(doc: doc), order.userID == userID {
+                            orders.append(order)
+                        }
+                    } else {
+                        if let order = Order(doc: doc) {
+                            orders.append(order)
+                        }
+                    }
+                }
+                completion(.success(orders))
+            } else if let error = error {
+                completion(.failure(error))
+            }
+        }
+    }
 }
