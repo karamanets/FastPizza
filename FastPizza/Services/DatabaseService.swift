@@ -97,12 +97,34 @@ class DatabaseService {
                             orders.append(order)
                         }
                     } else {
+                        //MARK: Admin panel
                         if let order = Order(doc: doc) {
                             orders.append(order)
                         }
                     }
                 }
                 completion(.success(orders))
+            } else if let error = error {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func getPositions(bu orderID: String, completion: @escaping (Result<[Position], Error>) -> Void ) {
+        
+        let position = orderReference.document(orderID).collection("positions")
+        
+        position.getDocuments { snap, error in
+            
+            if let querySnapshot = snap {
+                var positions = [Position]()
+                
+                for item in querySnapshot.documents {
+                    if let position = Position(doc: item) {
+                        positions.append(position)
+                    }
+                }
+                completion(.success(positions))
             } else if let error = error {
                 completion(.failure(error))
             }
