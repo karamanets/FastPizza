@@ -17,8 +17,13 @@ struct FastPizzaApp: App {
     var body: some Scene {
         WindowGroup {
            if let user = AuthService.shared.currentUser {
-               let viewModel = MainTabBarViewModel(user: user)
-               MainTabBar(viewModel: viewModel)
+               
+               if user.uid == "MKaQ3xwU67bSK6aQc1ilrxSoz4s1" { //MARK: Admin panel 
+                   AdminOrdersView()
+               } else {
+                   let viewModel = MainTabBarViewModel(user: user)
+                   MainTabBar(viewModel: viewModel)
+               }
             } else {
                 AuthView()
             }

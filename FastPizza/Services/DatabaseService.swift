@@ -86,7 +86,7 @@ class DatabaseService {
     }
     
     func getOrder(by userID: String?, completion: @escaping (Result<[Order], Error>) -> Void ) {
-        
+        //MARK: String - optional, if it has userID -> get order user if nil -> get all orders
         self.orderReference.getDocuments {  qSnap, error in
             
             if let qSnap = qSnap {
