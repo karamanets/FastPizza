@@ -63,7 +63,6 @@ struct ProfileView: View {
                     .padding()
                     .background(Color("Color1").opacity(0.5))
                     .cornerRadius(30)
-                    
             }
             .padding(.horizontal)
             .padding(.top)
@@ -105,7 +104,6 @@ struct ProfileView: View {
                         .listStyle(.plain)
                         .scrollContentBackground(.hidden)
                 }
-                
             }
             
             HStack {
@@ -143,11 +141,6 @@ struct ProfileView: View {
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView( vm: ProfileViewModel(profile:
-                                            DataUser(id: "",
-                                                     name: "Alexander Karamanets",
-                                                     phone: 777,
-                                                     address: "Cupertino, California, U.S. Infinite Loop Cupertino, CA 95014"
-)))
+        ProfileView(vm: ProfileViewModel(profile: Examples.shared.dataUser))
     }
 }

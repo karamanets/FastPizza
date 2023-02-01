@@ -29,10 +29,7 @@ struct MainTabBar: View {
                 }
                 .toolbarBackground(.hidden, for: .tabBar)
             
-            ProfileView( vm: ProfileViewModel(profile: DataUser(id: "",
-                                                                name: "",
-                                                                phone: 0,
-                                                                address: "")))
+            ProfileView( vm: ProfileViewModel(profile: Examples.shared.dataUser))
             .tabItem {
                 Image(systemName: "person")
                 Text("Profile")

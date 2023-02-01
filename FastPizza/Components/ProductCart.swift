@@ -35,7 +35,7 @@ struct ProductCart: View {
 
 struct ProductCart_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCart(viewModel: Position(id: UUID().uuidString, product: Product(id: UUID().uuidString, title: "4 cheese", imageUrl: "PizzaPR1", price: 33, description: "The best optional"), count: 3))
+        ProductCart(viewModel: Position(id: UUID().uuidString, product: Examples.shared.product, count: 3))
     }
 }
 

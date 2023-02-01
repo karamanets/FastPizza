@@ -10,6 +10,7 @@ import SwiftUI
 struct AdminOrdersView: View {
     
     @StateObject var viewModel = AdminOrdersViewModel()
+    @State private var isOrderViewShow = false
     
     var body: some View {
         
@@ -33,6 +34,10 @@ struct AdminOrdersView: View {
                     List (viewModel.orders) { item in
                         HStack {
                             OrderCell(order: item)
+                                .onTapGesture {
+                                    viewModel.currentOrder = item
+                                    isOrderViewShow.toggle()
+                                }
                             Spacer()
                         }
                         .foregroundColor(.black)
@@ -69,6 +74,10 @@ struct AdminOrdersView: View {
         .ignoresSafeArea()
         .onAppear {
             viewModel.getOrder()
+        }
+        .sheet(isPresented: $isOrderViewShow) {
+            let order = OrderViewModel(order: viewModel.currentOrder)
+            OrderView(viewModel: order)
         }
     }
 }

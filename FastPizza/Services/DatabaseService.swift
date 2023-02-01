@@ -36,9 +36,9 @@ class DatabaseService {
         }
     }
 
-    func getProfile(completion: @escaping (Result<DataUser, Error>) -> Void ) {
+    func getProfile(by userID: String? = nil, completion: @escaping (Result<DataUser, Error>) -> Void ) {
 
-        userReference.document(AuthService.shared.currentUser!.uid).getDocument { snapshot, error in
+        userReference.document(userID != nil ? userID! : AuthService.shared.currentUser!.uid).getDocument { snapshot, error in
 
             guard let snap = snapshot else { return }
             guard let data = snap.data() else { return }

@@ -20,14 +20,12 @@ struct Position: Identifiable {
     }
     
     var representation: [String: Any] {
-        
         var temp = [String: Any]()
         temp["id"] = self.id
         temp["count"] = self.count
         temp["cost"] = self.cost
         temp["title"] = product.title
         temp["price"] = product.price
-        
         return temp
     }
     

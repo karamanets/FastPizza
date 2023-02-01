@@ -14,6 +14,8 @@
 		2C387C7929818492007CD921 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C387C7829818492007CD921 /* AuthService.swift */; };
 		2C497EA7298A8EC50050A108 /* AdminOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA6298A8EC50050A108 /* AdminOrdersView.swift */; };
 		2C497EAA298A90360050A108 /* AdminOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA9298A90360050A108 /* AdminOrdersViewModel.swift */; };
+		2C497EAC298AA0AB0050A108 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EAB298AA0AB0050A108 /* OrderView.swift */; };
+		2C497EAE298AA0C70050A108 /* OrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EAD298AA0C70050A108 /* OrderViewModel.swift */; };
 		2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */; };
 		2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34742982CB4C0068AC56 /* DataUser.swift */; };
 		2C7B34772982CBDB0068AC56 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34762982CBDB0068AC56 /* DatabaseService.swift */; };
@@ -47,6 +49,8 @@
 		2C387CCC298199F3007CD921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2C497EA6298A8EC50050A108 /* AdminOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersView.swift; sourceTree = "<group>"; };
 		2C497EA9298A90360050A108 /* AdminOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersViewModel.swift; sourceTree = "<group>"; };
+		2C497EAB298AA0AB0050A108 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
+		2C497EAD298AA0C70050A108 /* OrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewModel.swift; sourceTree = "<group>"; };
 		2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		2C7B34742982CB4C0068AC56 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
 		2C7B34762982CBDB0068AC56 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -93,7 +97,6 @@
 			children = (
 				2C387C7829818492007CD921 /* AuthService.swift */,
 				2C7B34762982CBDB0068AC56 /* DatabaseService.swift */,
-				2C7B349A2983FBD00068AC56 /* Test.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 				2CCCBDF42972E94300C087FD /* CartView.swift */,
 				2CCCBDF62972E95A00C087FD /* ProfileView.swift */,
 				2CC01DA92979A94F0037819E /* ProductDetailView.swift */,
+				2C497EAB298AA0AB0050A108 /* OrderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -170,6 +174,7 @@
 				2CEEF00C297B17A100D99717 /* CartViewModel.swift */,
 				2C7B349C29841D690068AC56 /* ProfileViewModel.swift */,
 				2CEEF006297ACBE600D99717 /* ProductDetailViewModel.swift */,
+				2C497EAD298AA0C70050A108 /* OrderViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 				2CCB1F76297C035C00DF7CD5 /* ProductCart.swift */,
 				2C870D2E29880FF300DEA682 /* OrderCell.swift */,
 				2CAF4234298A13D200A58878 /* Examples.swift */,
+				2C7B349A2983FBD00068AC56 /* Test.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -294,11 +300,13 @@
 				2CAF4235298A13D200A58878 /* Examples.swift in Sources */,
 				2CCCBDFE2972ECDE00C087FD /* ProductCell.swift in Sources */,
 				2C7B349D29841D690068AC56 /* ProfileViewModel.swift in Sources */,
+				2C497EAE298AA0C70050A108 /* OrderViewModel.swift in Sources */,
 				2C497EAA298A90360050A108 /* AdminOrdersViewModel.swift in Sources */,
 				2CCCBDF52972E94300C087FD /* CartView.swift in Sources */,
 				2C387C7929818492007CD921 /* AuthService.swift in Sources */,
 				2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */,
 				2C497EA7298A8EC50050A108 /* AdminOrdersView.swift in Sources */,
+				2C497EAC298AA0AB0050A108 /* OrderView.swift in Sources */,
 				2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */,
 				2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */,
 			);

@@ -26,12 +26,10 @@ struct Order: Identifiable {
     
     var representation: [String: Any] {
         var temp = [String: Any]()
-        
         temp["id"] = self.id
         temp["userID"] = self.userID
         temp["date"] = Timestamp(date: date)
         temp["status"] = self.status
-        
         return temp
     }
     

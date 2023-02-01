@@ -52,10 +52,6 @@ struct ProductCell: View {
 //                        🔱
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(product: Product(id: "",
-                                     title: "3 cheese",
-                                     imageUrl: "Pizza",
-                                     price: 33,
-                                     description: "The best optional"))
+        ProductCell(product: Examples.shared.product)
     }
 }

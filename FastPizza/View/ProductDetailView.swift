@@ -131,12 +131,6 @@ struct ProductDetailView: View {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(viewModel:
-                            ProductDetailViewModel(product:
-                                    Product(id: "",
-                                        title: "3 cheese",
-                                        imageUrl: "pizza5",
-                                        price: 33,
-                                        description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend ")))
+        ProductDetailView(viewModel: ProductDetailViewModel(product: Examples.shared.product))
     }
 }
