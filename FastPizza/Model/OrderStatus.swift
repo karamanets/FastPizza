@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OrderStatus: String {
+enum OrderStatus: String, CaseIterable {
     
     case new = "New order"
     case cooking = "In process"

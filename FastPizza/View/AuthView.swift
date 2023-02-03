@@ -148,9 +148,14 @@ struct AuthView: View {
             }) }
         
         .fullScreenCover(isPresented: $isTabViewShow) {
-            //MARK: add default value?
-            let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)
-            MainTabBar(viewModel: user )
+            if AuthService.shared.currentUser?.uid == "MKaQ3xwU67bSK6aQc1ilrxSoz4s1" {
+                AdminOrdersView()
+            } else {
+                if AuthService.shared.currentUser != nil {
+                    let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)
+                    MainTabBar(viewModel: user )
+                }
+            }
         }
     }
 }

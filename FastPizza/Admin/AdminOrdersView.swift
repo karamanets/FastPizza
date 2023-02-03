@@ -11,6 +11,7 @@ struct AdminOrdersView: View {
     
     @StateObject var viewModel = AdminOrdersViewModel()
     @State private var isOrderViewShow = false
+    @State private var isShowAuthView  = false
     
     var body: some View {
         
@@ -56,7 +57,8 @@ struct AdminOrdersView: View {
         
             HStack {
                 Button {
-                    
+                    self.isShowAuthView.toggle()
+                    AuthService.shared.signOut()
                 } label: {
                     Text("Exit Admin")
                         .foregroundColor(.black)
@@ -77,7 +79,10 @@ struct AdminOrdersView: View {
         }
         .sheet(isPresented: $isOrderViewShow) {
             let order = OrderViewModel(order: viewModel.currentOrder)
-            OrderView(viewModel: order)
+            OrderView(viewModel: order, vm: viewModel)
+        }
+        .fullScreenCover(isPresented: $isShowAuthView) {
+            AuthView()
         }
     }
 }

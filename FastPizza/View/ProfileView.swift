@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @State private var alert = false
+    @State private var isShowAuth = false
     @StateObject var vm: ProfileViewModel
     
     var body: some View {
@@ -122,11 +123,15 @@ struct ProfileView: View {
                 .padding(.bottom, 90)
                 .confirmationDialog("Do you want to go out ?", isPresented: $alert, titleVisibility: .visible) {
                     Button {
-                        //
+                        AuthService.shared.signOut()
+                        self.isShowAuth.toggle()
                     } label: {
                         Text("Yes")
                     }
                 }
+            }
+            .fullScreenCover(isPresented: $isShowAuth) {
+                AuthView()
             }
         }
         .background(Image("background"))

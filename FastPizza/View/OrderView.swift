@@ -10,9 +10,18 @@ import SwiftUI
 struct OrderView: View {
     
     @StateObject var viewModel: OrderViewModel
+    @ObservedObject var vm: AdminOrdersViewModel
+    @Environment(\.dismiss) var goBack
+    
+    var statuses: [String] {
+        var status = [String]()
+        for item in OrderStatus.allCases {
+            status.append(item.rawValue)
+        }
+        return status
+    }
     
     var body: some View {
- 
             VStack {
                 VStack  {
                     VStack (alignment: .leading, spacing: 10) {
@@ -39,36 +48,81 @@ struct OrderView: View {
                 .cornerRadius(30)
                 .padding(8)
                 
-                if viewModel.order.positions.count == 0 {
-                    List {
-                        Text("Don't have any orders     🍕")
-                            .font(.title )
+                VStack {
+                    Picker("", selection: $viewModel.order.status) {
+                        ForEach(statuses, id: \.self) { item in
+                            Text(item)
+                        }
+                    }
+                    .onChange(of: viewModel.order.status) { item in
+                        DatabaseService.shared.setOrder(order: viewModel.order) { result in
+                            switch result {
+                            case .success(let order):
+                                print(order.status)
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
+                }
+                .frame(maxWidth: 200, maxHeight: 30)
+                .background(Color("Color1").opacity(0.5))
+                .cornerRadius(30)
+                .padding(8)
+                
+                VStack {
+                    if viewModel.order.positions.count == 0 {
+                        List {
+                            Text("Don't have any orders     🍕")
+                                .font(.title )
+                                .foregroundColor(.black)
+                                .padding(12)
+                                .background(Color("Color1").opacity(0.5))
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
+                        }
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
+                        
+                    } else {
+                        List (viewModel.order.positions) { item in
+                            HStack {
+                                ProductCart(viewModel: item)
+                            }
                             .foregroundColor(.black)
-                            .padding(12)
+                            .padding(11)
                             .background(Color("Color1").opacity(0.5))
                             .clipShape(RoundedRectangle(cornerRadius: 20))
                             .listRowBackground(Color.clear)
                             .listRowSeparator(.hidden)
-                    }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    
-                } else {
-                    List (viewModel.order.positions) { item in
-                        HStack {
-                            ProductCart(viewModel: item)
                         }
-                        .foregroundColor(.black)
-                        .padding(11)
-                        .background(Color("Color1").opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
+                        .listStyle(.plain)
+                        .scrollContentBackground(.hidden)
+                        .onAppear { viewModel.getUserData() }
                     }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                    .onAppear { viewModel.getUserData() }
                 }
+                
+                HStack {
+                    Button {
+                        goBack()
+                        
+                        DispatchQueue.global().async {
+                            vm.getOrder()
+                        }
+                        
+                    } label: {
+                        Text("Go back")
+                            .foregroundColor(.black)
+                            .font(.system(size: 18) .bold())
+                            .padding(.horizontal)
+                            .padding()
+                            .background(Color.red.opacity(0.9))
+                            .cornerRadius(14)
+                            .shadow(radius: 3,x: 3,y: 3)
+                    }
+                }
+                .padding(.bottom)
         }
         .background(Image("background"))
         .ignoresSafeArea()
@@ -77,6 +131,6 @@ struct OrderView: View {
 
 struct OrderView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderView(viewModel: OrderViewModel(order: Examples.shared.order))
+        OrderView(viewModel: OrderViewModel(order: Examples.shared.order), vm: AdminOrdersViewModel())
     }
 }

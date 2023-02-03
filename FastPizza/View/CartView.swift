@@ -8,42 +8,44 @@
 import SwiftUI
 
 struct CartView: View {
-    
+    //MARK: Refactoring objc -> error swipe delete
     @StateObject var viewModel: CartViewModel
     
     var body: some View {
         
         ZStack (alignment: .bottom) {
             
-                NavigationStack {
-                    List (viewModel.positions) { position in
-                        HStack {
-                            ProductCart(viewModel: position)
-                            Spacer()
-                        }
-                        .foregroundColor(.black)
-                        .padding(11)
-                        .background(Color("Color1").opacity(0.5))
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .listRowBackground(Color.clear)
-                        .listRowSeparator(.hidden)
-                        .swipeActions {
-                            Button {
-                                viewModel.positions.removeAll { item in
-                                    item.id == position.id
-                                }
-                            } label: {
-                                Text("Remove")
-                            }.tint(.red)
-                        }
+            VStack {
+                List (viewModel.positions) { position in
+                    HStack {
+                        ProductCart(viewModel: position)
+                            .swipeActions {
+                                Button {
+                                    viewModel.positions.removeAll { item in
+                                        item.id == position.id
+                                    }
+                                } label: {
+                                    Text("Remove")
+                                }.tint(.red)
+                            }
+                        Spacer()
                     }
-                    .scrollContentBackground(.hidden)
-                    .background(Image("background") .offset(y: -7.4) )
-                    .listStyle(.plain)
-                    .navigationTitle("Cart") 
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbarBackground(.hidden, for: .navigationBar)
+                    .foregroundColor(.black)
+                    .padding(11)
+                    .background(Color("Color1").opacity(0.5))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                    
                 }
+                .scrollContentBackground(.hidden)
+                .background(Image("background") .offset(y: -7.4) )
+                .listStyle(.plain)
+                .navigationTitle("Cart")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbarBackground(.hidden, for: .navigationBar)
+            }
+            .padding(.top, 50)
             
             VStack {
                 
@@ -81,8 +83,8 @@ struct CartView: View {
                     Button {
                         var order = Order(userID:
                                             AuthService.shared.currentUser!.uid,
-                                            date: Date(),
-                                            status: OrderStatus.new.rawValue)
+                                          date: Date(),
+                                          status: OrderStatus.new.rawValue)
                         order.positions = self.viewModel.positions
                         
                         DatabaseService.shared.setOrder(order: order) { result in
@@ -126,6 +128,7 @@ struct CartView: View {
         .ignoresSafeArea()
     }
 }
+
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView(viewModel: CartViewModel.shared)
