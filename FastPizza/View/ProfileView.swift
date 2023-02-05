@@ -135,6 +135,7 @@ struct ProfileView: View {
             }
         }
         .background(Image("background"))
+        
         .ignoresSafeArea()
         .onSubmit { vm.setProfile() }
         .onAppear {

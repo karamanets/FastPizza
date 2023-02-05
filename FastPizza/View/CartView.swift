@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CartView: View {
-    //MARK: Refactoring objc -> error swipe delete
+
     @StateObject var viewModel: CartViewModel
     
     var body: some View {
@@ -16,20 +16,14 @@ struct CartView: View {
         ZStack (alignment: .bottom) {
             
             VStack {
-                List (viewModel.positions) { position in
-                    HStack {
-                        ProductCart(viewModel: position)
-                            .swipeActions {
-                                Button {
-                                    viewModel.positions.removeAll { item in
-                                        item.id == position.id
-                                    }
-                                } label: {
-                                    Text("Remove")
-                                }.tint(.red)
-                            }
-                        Spacer()
+                List {
+                    ForEach (viewModel.positions) { position in
+                        HStack {
+                            ProductCart(viewModel: position)
+                            Spacer()
+                        }
                     }
+                    .onDelete(perform: viewModel.removeRow(at: ))
                     .foregroundColor(.black)
                     .padding(11)
                     .background(Color("Color1").opacity(0.5))
@@ -48,7 +42,6 @@ struct CartView: View {
             .padding(.top, 50)
             
             VStack {
-                
                 HStack {
                     Text("AMOUND :")
                         .font(.title3 .monospaced() .bold())
@@ -116,6 +109,7 @@ struct CartView: View {
             if(viewModel.positions.isEmpty) {
                 ZStack() {
                     Image("background")
+                        
                     Text("Add some Pizza 🍕")
                         .foregroundColor(.black)
                         .font(.title .monospaced() .bold())

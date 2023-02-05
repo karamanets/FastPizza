@@ -27,4 +27,8 @@ class CartViewModel: ObservableObject {
     func addPosition(position: Position) {
         self.positions.append(position)
     }
+    
+    func removeRow(at offsets: IndexSet) {
+        self.positions.remove(atOffsets: offsets)
+    }
 }

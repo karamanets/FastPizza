@@ -59,6 +59,7 @@ struct CatalogView: View {
                 }
             }
             .background(Image("background"))
+           
             .ignoresSafeArea()
 
         }
