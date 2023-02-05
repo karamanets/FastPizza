@@ -14,8 +14,9 @@ struct CartView: View {
     var body: some View {
         
         ZStack (alignment: .bottom) {
-            
+           
             VStack {
+                Spacer(minLength: 90)
                 List {
                     ForEach (viewModel.positions) { position in
                         HStack {
@@ -30,16 +31,14 @@ struct CartView: View {
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
-                    
                 }
                 .scrollContentBackground(.hidden)
-                .background(Image("background") .offset(y: -7.4) )
                 .listStyle(.plain)
                 .navigationTitle("Cart")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.hidden, for: .navigationBar)
             }
-            .padding(.top, 50)
+            .background(Image("background") )
             
             VStack {
                 HStack {
@@ -109,7 +108,6 @@ struct CartView: View {
             if(viewModel.positions.isEmpty) {
                 ZStack() {
                     Image("background")
-                        
                     Text("Add some Pizza 🍕")
                         .foregroundColor(.black)
                         .font(.title .monospaced() .bold())
