@@ -17,7 +17,6 @@ struct ProfileView: View {
         
         VStack (alignment: .center) {
             Spacer(minLength: 50)
-            
             HStack {
                 Image("logo")
                     .renderingMode(.template)
@@ -73,7 +72,6 @@ struct ProfileView: View {
                     .frame(width: 300, height: 4)
                     .foregroundColor(.orange.opacity(0.5))
             }
-            .padding(.top)
             
             VStack {
                 if vm.orders.count == 0 {
@@ -120,7 +118,7 @@ struct ProfileView: View {
                         .cornerRadius(14)
                         .shadow(radius: 3,x: 3,y: 3)
                 }
-                .padding(.bottom, 90)
+                .padding(.bottom)
                 .confirmationDialog("Do you want to go out ?", isPresented: $alert, titleVisibility: .visible) {
                     Button {
                         AuthService.shared.signOut()

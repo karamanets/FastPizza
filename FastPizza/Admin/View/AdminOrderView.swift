@@ -1,5 +1,5 @@
 //
-//  OrderView.swift
+//  AdminOrderView.swift
 //  FastPizza
 //
 //  Created by Alex Karamanets on 01.02.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct OrderView: View {
+struct AdminOrderView: View {
     
-    @StateObject var viewModel: OrderViewModel
+    @StateObject var viewModel: AdminOrderViewModel
     @ObservedObject var vm: AdminOrdersViewModel
     @Environment(\.dismiss) var goBack
     
@@ -23,6 +23,7 @@ struct OrderView: View {
     
     var body: some View {
             VStack {
+                Spacer(minLength: 50)
                 VStack  {
                     VStack (alignment: .leading, spacing: 10) {
                         Text("Person : \(viewModel.user.name)")
@@ -106,11 +107,9 @@ struct OrderView: View {
                 HStack {
                     Button {
                         goBack()
-                        
                         DispatchQueue.global().async {
                             vm.getOrder()
                         }
-                        
                     } label: {
                         Text("Go back")
                             .foregroundColor(.black)
@@ -129,8 +128,8 @@ struct OrderView: View {
     }
 }
 
-struct OrderView_Previews: PreviewProvider {
+struct AdminOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        OrderView(viewModel: OrderViewModel(order: Examples.shared.order), vm: AdminOrdersViewModel())
+        AdminOrderView(viewModel: AdminOrderViewModel(order: Examples.shared.order), vm: AdminOrdersViewModel())
     }
 }

@@ -17,6 +17,8 @@ struct Examples {
     
     let dataUser = DataUser(id: "", name: "Lucius", phone: 999_99_99, address: "California CA, Central park building 7/2 apartment 11  ")
     
+    let descriptionAdd = "The photo of the product must be 1280x1024 or larger"
+    
     let product = Product(id: "",
                           title: "3 cheese",
                           imageUrl: "pizza5",

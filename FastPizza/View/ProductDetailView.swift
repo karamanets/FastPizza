@@ -119,7 +119,6 @@ struct ProductDetailView: View {
                 Spacer(minLength: 50)
             }
             .padding(.top, 30)
-            .navigationTitle("Detail")
             .navigationBarTitleDisplayMode(.inline)
             .background(Image("background"))
             .ignoresSafeArea()

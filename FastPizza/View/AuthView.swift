@@ -39,26 +39,35 @@ struct AuthView: View {
             
             VStack (spacing: 25) {
                 TextField("Login", text: $email)
+                    .textContentType(.emailAddress)
+                    .foregroundColor(.black)
                     .font(.title2)
                     .padding(.all,14)
                     .padding(.horizontal, 30)
                     .background(Color.white)
                     .cornerRadius(30)
+                    .tint(.orange)
                 
                 SecureField("Password", text: $password)
+                    .textContentType(.password)
+                    .foregroundColor(.black)
                     .font(.title2)
                     .padding(.all,14)
                     .padding(.horizontal, 30)
                     .background(Color.white)
                     .cornerRadius(30)
+                    .tint(.orange)
                 
                 if !SingIn_Up {
                     SecureField("Password", text: $password2)
+                        .textContentType(.password)
+                        .foregroundColor(.black)
                         .font(.title2)
                         .padding(.all,14)
                         .padding(.horizontal, 30)
                         .background(Color.white)
                         .cornerRadius(30)
+                        .tint(.orange)
                 }
                 Button {
                     if SingIn_Up {
@@ -153,7 +162,7 @@ struct AuthView: View {
             } else {
                 if AuthService.shared.currentUser != nil {
                     let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)
-                    MainTabBar(viewModel: user )
+                    MainTabBarView(viewModel: user )
                 }
             }
         }

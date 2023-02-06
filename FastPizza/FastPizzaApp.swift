@@ -22,7 +22,7 @@ struct FastPizzaApp: App {
                    AdminOrdersView()
                } else {
                    let viewModel = MainTabBarViewModel(user: user)
-                   MainTabBar(viewModel: viewModel)
+                   MainTabBarView(viewModel: viewModel)
                }
             } else {
                 AuthView()

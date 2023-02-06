@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct MainTabBar: View {
+struct MainTabBarView: View {
     
     var viewModel: MainTabBarViewModel
     
@@ -39,7 +39,11 @@ struct MainTabBar: View {
     }
 }
 
-
+struct MainTabBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        AuthView()
+    }
+}
 
 
 
