@@ -29,7 +29,7 @@ struct ProductDetailView: View {
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(20)
-                        .frame(maxWidth: .infinity, maxHeight: 250)
+                        .frame(maxWidth: .infinity, maxHeight: 240)
                         .shadow(radius: 3,x: 3,y: 3)
                 }
                 
@@ -99,8 +99,8 @@ struct ProductDetailView: View {
                 
                 HStack {
                     Text(viewModel.product.description)
-                        .lineLimit(10)
-                        .font(.system(size: 20) .monospaced() .bold() .italic())
+                        .lineLimit(5)
+                        .font(.title3 .monospaced() .bold() .italic())
                         .foregroundColor(Color("Color1"))
                 }
                 .padding()
@@ -118,7 +118,6 @@ struct ProductDetailView: View {
                 .cornerRadius(50) }
                 Spacer(minLength: 50)
             }
-            .padding(.top, 30)
             .navigationBarTitleDisplayMode(.inline)
             .background(Image("background"))
             .ignoresSafeArea()

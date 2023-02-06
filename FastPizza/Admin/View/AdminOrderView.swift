@@ -111,7 +111,7 @@ struct AdminOrderView: View {
                             vm.getOrder()
                         }
                     } label: {
-                        Text("Go back")
+                        Text("Refresh")
                             .foregroundColor(.black)
                             .font(.system(size: 18) .bold())
                             .padding(.horizontal)

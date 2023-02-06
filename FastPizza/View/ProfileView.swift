@@ -112,8 +112,8 @@ struct ProfileView: View {
                     Text("Exit app")
                         .foregroundColor(.black)
                         .font(.system(size: 18) .bold())
-                        .padding(.horizontal)
-                        .padding()
+                        .padding(.horizontal, 10)
+                        .padding(8)
                         .background(Color.red.opacity(0.9))
                         .cornerRadius(14)
                         .shadow(radius: 3,x: 3,y: 3)
@@ -128,6 +128,7 @@ struct ProfileView: View {
                     }
                 }
             }
+            .padding(.bottom, 90)
             .fullScreenCover(isPresented: $isShowAuth) {
                 AuthView()
             }

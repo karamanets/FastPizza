@@ -13,5 +13,5 @@ class CatalogViewModel: ObservableObject {
     
     //MARK: fake catalog
     
-    var popularProducts = Examples.shared.catalog
+    var popularProducts = Examples.shared.fakeCatalog
 }
