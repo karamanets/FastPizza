@@ -158,7 +158,7 @@ struct AuthView: View {
         
         .fullScreenCover(isPresented: $isTabViewShow) {
             if AuthService.shared.currentUser?.uid == "MKaQ3xwU67bSK6aQc1ilrxSoz4s1" {
-                AdminOrdersView()
+                AdminMainView()
             } else {
                 if AuthService.shared.currentUser != nil {
                     let user = MainTabBarViewModel(user: AuthService.shared.currentUser!)

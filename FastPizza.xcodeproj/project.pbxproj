@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		2C2BA10629912633006F4600 /* AdminAddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2BA10529912633006F4600 /* AdminAddProductView.swift */; };
+		2C2BA1082991452E006F4600 /* AdminAddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2BA1072991452E006F4600 /* AdminAddProductViewModel.swift */; };
 		2C30BFE7298179F9009C9072 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */; };
 		2C30BFEA29817CC8009C9072 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFE929817CC8009C9072 /* FirebaseAuth */; };
 		2C30BFEC29817CC8009C9072 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFEB29817CC8009C9072 /* FirebaseFirestore */; };
 		2C30BFEE29817CC8009C9072 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 2C30BFED29817CC8009C9072 /* FirebaseStorage */; };
 		2C387C7929818492007CD921 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C387C7829818492007CD921 /* AuthService.swift */; };
-		2C497EA7298A8EC50050A108 /* AdminOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA6298A8EC50050A108 /* AdminOrdersView.swift */; };
-		2C497EAA298A90360050A108 /* AdminOrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA9298A90360050A108 /* AdminOrdersViewModel.swift */; };
+		2C497EA7298A8EC50050A108 /* AdminMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA6298A8EC50050A108 /* AdminMainView.swift */; };
+		2C497EAA298A90360050A108 /* AdminMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA9298A90360050A108 /* AdminMainViewModel.swift */; };
 		2C497EAC298AA0AB0050A108 /* AdminOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EAB298AA0AB0050A108 /* AdminOrderView.swift */; };
 		2C497EAE298AA0C70050A108 /* AdminOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EAD298AA0C70050A108 /* AdminOrderViewModel.swift */; };
 		2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */; };
@@ -45,11 +46,12 @@
 
 /* Begin PBXFileReference section */
 		2C2BA10529912633006F4600 /* AdminAddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAddProductView.swift; sourceTree = "<group>"; };
+		2C2BA1072991452E006F4600 /* AdminAddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAddProductViewModel.swift; sourceTree = "<group>"; };
 		2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C387C7829818492007CD921 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		2C387CCC298199F3007CD921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		2C497EA6298A8EC50050A108 /* AdminOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersView.swift; sourceTree = "<group>"; };
-		2C497EA9298A90360050A108 /* AdminOrdersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrdersViewModel.swift; sourceTree = "<group>"; };
+		2C497EA6298A8EC50050A108 /* AdminMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainView.swift; sourceTree = "<group>"; };
+		2C497EA9298A90360050A108 /* AdminMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainViewModel.swift; sourceTree = "<group>"; };
 		2C497EAB298AA0AB0050A108 /* AdminOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrderView.swift; sourceTree = "<group>"; };
 		2C497EAD298AA0C70050A108 /* AdminOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrderViewModel.swift; sourceTree = "<group>"; };
 		2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
@@ -96,7 +98,7 @@
 		2C2BA1032991236A006F4600 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				2C497EA6298A8EC50050A108 /* AdminOrdersView.swift */,
+				2C497EA6298A8EC50050A108 /* AdminMainView.swift */,
 				2C497EAB298AA0AB0050A108 /* AdminOrderView.swift */,
 				2C2BA10529912633006F4600 /* AdminAddProductView.swift */,
 			);
@@ -106,8 +108,9 @@
 		2C2BA10429912374006F4600 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				2C497EA9298A90360050A108 /* AdminMainViewModel.swift */,
 				2C497EAD298AA0C70050A108 /* AdminOrderViewModel.swift */,
-				2C497EA9298A90360050A108 /* AdminOrdersViewModel.swift */,
+				2C2BA1072991452E006F4600 /* AdminAddProductViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				2CCCBDF32972E93800C087FD /* CatalogView.swift in Sources */,
 				2CCCBDE32972D11700C087FD /* FastPizzaApp.swift in Sources */,
 				2C870D2F29880FF300DEA682 /* OrderCell.swift in Sources */,
+				2C2BA1082991452E006F4600 /* AdminAddProductViewModel.swift in Sources */,
 				2CEEF007297ACBE600D99717 /* ProductDetailViewModel.swift in Sources */,
 				2CCCBDF72972E95A00C087FD /* ProfileView.swift in Sources */,
 				2CBD915229857D3900CA3401 /* OrderStatus.swift in Sources */,
@@ -319,11 +323,11 @@
 				2CCCBDFE2972ECDE00C087FD /* ProductCell.swift in Sources */,
 				2C7B349D29841D690068AC56 /* ProfileViewModel.swift in Sources */,
 				2C497EAE298AA0C70050A108 /* AdminOrderViewModel.swift in Sources */,
-				2C497EAA298A90360050A108 /* AdminOrdersViewModel.swift in Sources */,
+				2C497EAA298A90360050A108 /* AdminMainViewModel.swift in Sources */,
 				2CCCBDF52972E94300C087FD /* CartView.swift in Sources */,
 				2C387C7929818492007CD921 /* AuthService.swift in Sources */,
 				2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */,
-				2C497EA7298A8EC50050A108 /* AdminOrdersView.swift in Sources */,
+				2C497EA7298A8EC50050A108 /* AdminMainView.swift in Sources */,
 				2C497EAC298AA0AB0050A108 /* AdminOrderView.swift in Sources */,
 				2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */,
 				2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */,

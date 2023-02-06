@@ -25,7 +25,7 @@ class ProfileViewModel: ObservableObject {
                 self.orders = orders
                 
                 for (index, order) in self.orders.enumerated() {
-                    DatabaseService.shared.getPositions(bu: order.id) { result in
+                    DatabaseService.shared.getPositions(by: order.id) { result in
                         
                         switch result {
                             

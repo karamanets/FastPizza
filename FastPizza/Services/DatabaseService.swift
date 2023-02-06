@@ -110,7 +110,7 @@ class DatabaseService {
         }
     }
     
-    func getPositions(bu orderID: String, completion: @escaping (Result<[Position], Error>) -> Void ) {
+    func getPositions(by orderID: String, completion: @escaping (Result<[Position], Error>) -> Void ) {
         
         let position = orderReference.document(orderID).collection("positions")
         

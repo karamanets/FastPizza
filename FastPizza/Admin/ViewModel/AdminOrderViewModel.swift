@@ -10,7 +10,7 @@ import Foundation
 class AdminOrderViewModel: ObservableObject {
     
     @Published var order: Order
-    @Published var user = DataUser(id: "", name: "", phone: 0, address: "")
+    @Published var user = DataUser(id: "", name: "", phone: 911, address: "")
     
     init(order: Order) { self.order = order }
     

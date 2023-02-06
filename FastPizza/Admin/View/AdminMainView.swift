@@ -1,5 +1,5 @@
 //
-//  AdminOrdersView.swift
+//  AdminMainView.swift
 //  FastPizza
 //
 //  Created by Alex Karamanets on 01.02.2023.
@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct AdminOrdersView: View {
+struct AdminMainView: View {
     
-    @StateObject var viewModel = AdminOrdersViewModel()
+    @StateObject var viewModel = AdminMainViewModel()
     @State private var isOrderViewShow = false
     @State private var isShowAuthView  = false
     
@@ -103,9 +103,9 @@ struct AdminOrdersView: View {
     }
 }
 
-struct AdminOrdersView_Previews: PreviewProvider {
+struct AdminMainView_Previews: PreviewProvider {
     static var previews: some View {
-        AdminOrdersView()
+        AdminMainView()
     }
 }
 

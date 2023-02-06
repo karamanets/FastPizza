@@ -19,7 +19,7 @@ struct FastPizzaApp: App {
            if let user = AuthService.shared.currentUser {
                
                if user.uid == "MKaQ3xwU67bSK6aQc1ilrxSoz4s1" { //MARK: Admin panel
-                   AdminOrdersView()
+                   AdminMainView()
                } else {
                    let viewModel = MainTabBarViewModel(user: user)
                    MainTabBarView(viewModel: viewModel)

@@ -10,7 +10,7 @@ import SwiftUI
 struct AdminOrderView: View {
     
     @StateObject var viewModel: AdminOrderViewModel
-    @ObservedObject var vm: AdminOrdersViewModel
+    @ObservedObject var vm: AdminMainViewModel
     @Environment(\.dismiss) var goBack
     
     var statuses: [String] {
@@ -130,6 +130,6 @@ struct AdminOrderView: View {
 
 struct AdminOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        AdminOrderView(viewModel: AdminOrderViewModel(order: Examples.shared.order), vm: AdminOrdersViewModel())
+        AdminOrderView(viewModel: AdminOrderViewModel(order: Examples.shared.order), vm: AdminMainViewModel())
     }
 }
