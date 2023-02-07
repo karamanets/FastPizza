@@ -77,7 +77,7 @@ struct AdminAddProductView: View {
                         .tint(.red)
                     
                     TextField("Price", value: $price, format: .number)
-                        .keyboardType(.numberPad)
+                        .keyboardType(.numbersAndPunctuation)
                         .foregroundColor(.black)
                         .font(.title2)
                         .padding(.all,14)
