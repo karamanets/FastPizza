@@ -32,5 +32,4 @@ import PhotosUI
             self.image = nil
         }
     }
-    
 }

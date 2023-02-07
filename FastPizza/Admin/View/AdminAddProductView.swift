@@ -58,7 +58,7 @@ struct AdminAddProductView: View {
                         .padding(.all, 10)
                         .padding(.horizontal, 20)
                         .background(Color.orange)
-                        .cornerRadius(20)
+                        .cornerRadius(12)
                         .opacity(0.8)
                         .shadow(color: .black, radius: 3, x: 2, y: 3)
                 })
@@ -112,7 +112,7 @@ struct AdminAddProductView: View {
                             .padding(.horizontal)
                             .padding()
                             .background(Color.green.opacity(0.9))
-                            .cornerRadius(14)
+                            .cornerRadius(12)
                             .shadow(radius: 3,x: 3,y: 3)
                     }
                 }

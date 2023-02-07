@@ -10,8 +10,10 @@ import SwiftUI
 struct AdminMainView: View {
     
     @StateObject var viewModel = AdminMainViewModel()
+    
     @State private var isOrderViewShow = false
     @State private var isShowAuthView  = false
+    @State private var dialogExit      = false
     
     var body: some View {
         
@@ -56,8 +58,7 @@ struct AdminMainView: View {
                 
                 HStack {
                     Button {
-                         self.isShowAuthView.toggle()
-                         AuthService.shared.signOut()
+                        self.dialogExit.toggle()
                     } label: {
                         Text("🍕Exit Admin ")
                             .foregroundColor(.black)
@@ -99,6 +100,14 @@ struct AdminMainView: View {
         }
         .fullScreenCover(isPresented: $isShowAuthView) {
             AuthView()
+        }
+        .confirmationDialog("Do you want to exit ?",
+                            isPresented: $dialogExit,
+                            titleVisibility: .visible) {
+            Button("Exit", role: .destructive) {
+                self.isShowAuthView.toggle()
+                AuthService.shared.signOut()
+            }
         }
     }
 }
