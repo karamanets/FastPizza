@@ -10,7 +10,8 @@ import PhotosUI
 
 @MainActor class AdminAddProductViewModel: ObservableObject {
     
-    @Published var image: Image?
+    @Published var image   : Image?
+    @Published var imageSet: UIImage?
     @Published var imageSelection: PhotosPickerItem? {
         didSet {
             Task {
@@ -24,6 +25,7 @@ import PhotosUI
         do {
             if let data = try await imageSelection?.loadTransferable(type: Data.self) {
                 if let uiImage = UIImage(data: data) {
+                    self.imageSet =  uiImage    
                     self.image = Image(uiImage: uiImage)
                 }
             }

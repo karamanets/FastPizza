@@ -12,10 +12,12 @@ struct AdminAddProductView: View {
     
     @StateObject var viewModel = AdminAddProductViewModel()
     
-    @State private var name        = String()
+    @State private var title       = String()
     @State private var price       : Int? = nil
     @State private var description = String()
     @State private var alert       = false
+    @State private var dialog      = false
+
     
     init() {
         let navBarAppearance = UINavigationBar.appearance()
@@ -65,8 +67,7 @@ struct AdminAddProductView: View {
                 Spacer()
                 
                 VStack {
-                    TextField("Name", text: $name)
-                        .textContentType(.name)
+                    TextField("Name", text: $title)
                         .foregroundColor(.black)
                         .font(.title2)
                         .padding(.all,14)
@@ -86,7 +87,6 @@ struct AdminAddProductView: View {
                         .tint(.red)
                     
                     TextField("Description", text: $description)
-                        .textContentType(.name)
                         .foregroundColor(.black)
                         .font(.title2)
                         .padding(.all,14)
@@ -128,12 +128,37 @@ struct AdminAddProductView: View {
         .alert("Do you wont to add position to Server ? 🦉", isPresented: $alert) {
             Button("Yes", role: .destructive) {
                 
+                guard let price = price else { return }
                 
-                
-                
-                
-                
-                self.name = ""
+                if title.count > 4 && description.count > 4 {
+                    
+                    let product = Product(id: UUID().uuidString, title: title, price: price, description: description)
+                    
+                    guard let image = viewModel.imageSet?.jpegData(compressionQuality: 0.3) else { return }
+                    
+                    DatabaseService.shared.setProduct(product: product, image: image) { result in
+                        
+                        switch result {
+                            
+                        case .success(let product):
+                            print("Product was added \(product.title)")
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                    self.title = ""
+                    self.price = nil
+                    self.description = ""
+                    viewModel.image = nil
+                } else {
+                    self.dialog.toggle()
+                }
+            }
+        }
+        .confirmationDialog("Name and Description must be more 5 symbols, and price must be figures !",
+                            isPresented: $dialog, titleVisibility: .visible) {
+            Button ("Try again", role: .destructive) {
+                self.title = ""
                 self.price = nil
                 self.description = ""
                 viewModel.image = nil
