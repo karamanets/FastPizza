@@ -19,41 +19,34 @@ struct Examples {
     
     let descriptionAdd = "The photo of the product must be 1280x1024 or larger"
     
-    let product = Product(id: "",
+    let product = Product(id: "pizza5",
                           title: "3 cheese",
-                          imageUrl: "pizza5",
                           price: 33,
                           description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend "
     )
     
-    let fakeCatalog = [Product(id: "",
+    let fakeCatalog = [Product(id: "pizza9",
                            title: "Chile",
-                           imageUrl: "pizza9",
                            price: 33,
                            description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend"),
-                   Product(id: "1",
+                   Product(id: "pizza7",
                            title: "Diablo",
-                           imageUrl: "pizza7",
                            price: 23,
                            description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend"),
-                   Product(id: "2",
+                   Product(id: "pizza3",
                            title: "Spicy",
-                           imageUrl: "pizza3",
                            price: 43,
                            description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend"),
-                   Product(id: "3",
+                   Product(id: "pizza4",
                            title: "Hot fish",
-                           imageUrl: "pizza4",
                            price: 65,
                            description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend"),
-                   Product(id: "4",
+                   Product(id: "pizza5",
                            title: "Meat",
-                           imageUrl: "pizza5",
                            price: 27,
                            description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend"),
-                   Product(id: "5",
+                   Product(id: "pizza6",
                            title: "Vegan",
-                           imageUrl: "pizza6",
                            price: 18,
                            description: "The best optional, made for a long tame ago bat we don't now why, and you also might don't worry about it at all ! Be Happy me friend")
 ]

@@ -16,7 +16,7 @@ struct ProductCell: View {
         ZStack (alignment: .topTrailing){
             
             ZStack (alignment: .bottom) {
-                Image(product.imageUrl)
+                Image(product.id)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 180)

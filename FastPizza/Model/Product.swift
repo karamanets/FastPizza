@@ -11,10 +11,18 @@ struct Product: Identifiable {
     
     var id         : String
     var title      : String
-    var imageUrl   : String
     var price      : Int
     var description: String
     
 //    var ordersCount: Int
 //    var isRecommend: Bool
+    
+    var representation: [String: Any] {
+        var temp = [String: Any]()
+        temp["id"] = self.id
+        temp["title"] = self.title
+        temp["price"] = self.price
+        temp["description"] = self.description
+        return temp
+    }
 }

@@ -9,25 +9,24 @@ import Foundation
 import FirebaseFirestore
 
 class DatabaseService {
-
-    static let shared = DatabaseService()
-
-    private init() { }
-
-    private let db = Firestore.firestore()
-
-    private var userReference: CollectionReference {
-        return db.collection("users")
-    }
     
-    private var orderReference: CollectionReference {
-        return db.collection("orders")
-    }
-
-    func setProfile(user: DataUser, completion: @escaping (Result<DataUser, Error>) -> Void ) {
-
+    static let shared = DatabaseService()
+    
+    private init() { }
+    
+    private let db = Firestore.firestore()
+    
+    private var userReference: CollectionReference { db.collection("users") }
+    
+    private var orderReference: CollectionReference { db.collection("orders") }
+    
+    private var productsReference: CollectionReference { db.collection("products") }
+    
+    
+    func setProfile(user: DataUser, completion: @escaping (Result<DataUser, Error>) -> Void) {
+        
         userReference.document(user.id).setData(user.representation) { error in
-
+            
             if let error = error {
                 completion(.failure(error))
             } else {
@@ -35,25 +34,25 @@ class DatabaseService {
             }
         }
     }
-
-    func getProfile(by userID: String? = nil, completion: @escaping (Result<DataUser, Error>) -> Void ) {
-
+    
+    func getProfile(by userID: String? = nil, completion: @escaping (Result<DataUser, Error>) -> Void) {
+        
         userReference.document(userID != nil ? userID! : AuthService.shared.currentUser!.uid).getDocument { snapshot, error in
-
+            
             guard let snap = snapshot else { return }
             guard let data = snap.data() else { return }
             guard let id = data["id"] as? String else { return }
             guard let name = data["name"] as? String else { return }
             guard let phone = data["phone"] as? Int else { return }
             guard let address = data["address"] as? String else { return }
-
+            
             let user = DataUser(id: id, name: name, phone: phone, address: address)
-
+            
             completion(.success(user))
         }
     }
     
-    func setOrder(order: Order, completion: @escaping (Result<Order, Error>) -> Void ) {
+    func setOrder(order: Order, completion: @escaping (Result<Order, Error>) -> Void) {
         
         orderReference.document(order.id).setData(order.representation) { error in
             
@@ -75,7 +74,7 @@ class DatabaseService {
         }
     }
     
-    func setPositions(to orderID: String, positions: [Position], completion: @escaping (Result<[Position], Error>) -> Void ) {
+    func setPositions(to orderID: String, positions: [Position], completion: @escaping (Result<[Position], Error>) -> Void) {
         
         let positionsRef = orderReference.document(orderID).collection("positions")
         
@@ -85,7 +84,7 @@ class DatabaseService {
         completion(.success(positions))
     }
     
-    func getOrder(by userID: String?, completion: @escaping (Result<[Order], Error>) -> Void ) {
+    func getOrder(by userID: String?, completion: @escaping (Result<[Order], Error>) -> Void) {
         //MARK: String - optional, if it has userID -> get order user if nil -> get all orders
         self.orderReference.getDocuments {  qSnap, error in
             
@@ -110,7 +109,7 @@ class DatabaseService {
         }
     }
     
-    func getPositions(by orderID: String, completion: @escaping (Result<[Position], Error>) -> Void ) {
+    func getPositions(by orderID: String, completion: @escaping (Result<[Position], Error>) -> Void) {
         
         let position = orderReference.document(orderID).collection("positions")
         
@@ -127,6 +126,26 @@ class DatabaseService {
                 completion(.success(positions))
             } else if let error = error {
                 completion(.failure(error))
+            }
+        }
+    }
+    
+    func setProduct(product: Product, image: Data, completion: @escaping (Result<Product, Error>) -> Void) {
+        
+        StorageService.shared.upload(id: product.id, image: image) { result in
+            switch result {
+            case .success(let sizeInfo):
+                print(sizeInfo)
+                self.productsReference.document(product.id).setData(product.representation) { error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(product))
+                    }
+                }
+            case .failure(let error):
+                completion(.failure(error))
+                print(error.localizedDescription)
             }
         }
     }

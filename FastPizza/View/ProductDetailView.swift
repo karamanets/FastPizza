@@ -24,7 +24,7 @@ struct ProductDetailView: View {
                 
                 VStack {
                     Spacer()
-                    Image(viewModel.product.imageUrl)
+                    Image(viewModel.product.id)
                         .renderingMode(.original)
                         .resizable()
                         .scaledToFit()

@@ -42,7 +42,7 @@ struct AdminAddProductView: View {
                     }
                     
                 } else {
-                    Image(Examples.shared.product.imageUrl)
+                    Image(Examples.shared.product.id)
                         .renderingMode(.original)
                         .resizable()
                         .scaledToFit()
@@ -127,6 +127,12 @@ struct AdminAddProductView: View {
         }
         .alert("Do you wont to add position to Server ? 🦉", isPresented: $alert) {
             Button("Yes", role: .destructive) {
+                
+                
+                
+                
+                
+                
                 self.name = ""
                 self.price = nil
                 self.description = ""
