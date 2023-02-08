@@ -6,12 +6,21 @@
 //
 
 import Foundation
+import UIKit
 
 class CatalogViewModel: ObservableObject {
     
-    static let shared = CatalogViewModel()
+    @Published var products = [Product]()
     
-    //MARK: fake catalog
-    
-    var popularProducts = Examples.shared.fakeCatalog
+    func getProducts() {
+        DatabaseService.shared.getProducts { result in
+            switch result {
+                
+            case .success(let products):
+                self.products = products
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }

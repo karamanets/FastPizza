@@ -136,7 +136,7 @@ struct AdminAddProductView: View {
                     
                     guard let image = viewModel.imageSet?.jpegData(compressionQuality: 0.3) else { return }
                     
-                    DatabaseService.shared.setProduct(product: product, image: image) { result in
+                    DatabaseService.shared.setProducts(product: product, image: image) { result in
                         
                         switch result {
                             

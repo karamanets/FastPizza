@@ -9,6 +9,8 @@ import SwiftUI
 
 struct CatalogView: View {
     
+    @StateObject var viewModel = CatalogViewModel()
+    
     var layout = [GridItem(.adaptive(minimum: 160), spacing: 30)]
     
     var body: some View {
@@ -21,7 +23,7 @@ struct CatalogView: View {
                     ScrollView (.horizontal, showsIndicators: false) {
                         
                         LazyHGrid(rows: layout, spacing: 16) {
-                            ForEach(CatalogViewModel.shared.popularProducts) { item in
+                            ForEach(viewModel.products) { item in
                                 NavigationLink {
                                     let viewModel = ProductDetailViewModel(product: item)
                                     ProductDetailView(viewModel: viewModel)
@@ -39,7 +41,7 @@ struct CatalogView: View {
                     ScrollView (.vertical, showsIndicators: false) {
                         
                         LazyVGrid(columns: layout) {
-                            ForEach(CatalogViewModel.shared.popularProducts) { item in
+                            ForEach(viewModel.products) { item in
                                 NavigationLink {
                                     let viewModel = ProductDetailViewModel(product: item)
                                     ProductDetailView(viewModel: viewModel)
@@ -59,9 +61,10 @@ struct CatalogView: View {
                 }
             }
             .background(Image("background"))
-           
             .ignoresSafeArea()
-
+        }
+        .onAppear {
+            viewModel.getProducts()
         }
     }
 }

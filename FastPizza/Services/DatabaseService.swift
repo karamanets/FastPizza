@@ -130,7 +130,7 @@ class DatabaseService {
         }
     }
     
-    func setProduct(product: Product, image: Data, completion: @escaping (Result<Product, Error>) -> Void) {
+    func setProducts(product: Product, image: Data, completion: @escaping (Result<Product, Error>) -> Void) {
         
         StorageService.shared.upload(id: product.id, image: image) { result in
             switch result {
@@ -147,6 +147,27 @@ class DatabaseService {
                 completion(.failure(error))
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func getProducts(completion: @escaping (Result<[Product], Error>) -> Void) {
+        
+        self.productsReference.getDocuments { qSnap, error in
+            
+            guard let qSnap = qSnap else {
+                if let error = error {
+                    completion(.failure(error))
+                }
+                return
+            }
+            let docs = qSnap.documents
+            var products = [Product]()
+            
+            for item in docs {
+                guard let product = Product(doc: item) else { return }
+                products.append(product)
+            }
+            completion(.success(products))
         }
     }
 }
