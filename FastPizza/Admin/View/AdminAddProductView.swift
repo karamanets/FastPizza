@@ -30,7 +30,6 @@ struct AdminAddProductView: View {
         NavigationStack {
             VStack {
                 if viewModel.image != nil {
-                    
                     if let image = viewModel.image {
                         image
                             .renderingMode(.original)
@@ -42,7 +41,6 @@ struct AdminAddProductView: View {
                     } else {
                         Text("Error type")
                     }
-                    
                 } else {
                     Image(Examples.shared.product.id)
                         .renderingMode(.original)
@@ -52,7 +50,6 @@ struct AdminAddProductView: View {
                         .frame(maxWidth: .infinity, maxHeight: 250)
                         .shadow(radius: 3,x: 3,y: 3)
                 }
-                
                 PhotosPicker(selection: $viewModel.imageSelection, label: {
                     Text("Add Foto")
                         .foregroundColor(.black)
@@ -155,8 +152,10 @@ struct AdminAddProductView: View {
                 }
             }
         }
-        .confirmationDialog("Name and Description must be more 5 symbols, and price must be figures !",
-                            isPresented: $dialog, titleVisibility: .visible) {
+        .confirmationDialog(
+            "Name and Description must be more 5 symbols, and price must be figures !",
+            isPresented: $dialog,
+            titleVisibility: .visible) {
             Button ("Try again", role: .destructive) {
                 self.title = ""
                 self.price = nil
@@ -166,7 +165,7 @@ struct AdminAddProductView: View {
         }
     }
 }
-
+//                     🔱
 struct AdminAddProductView_Previews: PreviewProvider {
     static var previews: some View {
         AdminAddProductView()

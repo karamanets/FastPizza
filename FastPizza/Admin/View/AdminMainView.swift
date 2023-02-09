@@ -111,7 +111,7 @@ struct AdminMainView: View {
         }
     }
 }
-
+//                     🔱
 struct AdminMainView_Previews: PreviewProvider {
     static var previews: some View {
         AdminMainView()

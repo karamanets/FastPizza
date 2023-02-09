@@ -21,7 +21,6 @@ import PhotosUI
     }
     
     func loadImage(from imageSelection: PhotosPickerItem?) async throws {
-        
         do {
             if let data = try await imageSelection?.loadTransferable(type: Data.self) {
                 if let uiImage = UIImage(data: data) {

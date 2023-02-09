@@ -10,15 +10,12 @@ import SwiftUI
 struct AuthView: View {
     
     @State private var SingIn_Up = true
-    
     @State private var email     = ""
     @State private var password  = ""
     @State private var password2 = ""
-    
     @State private var alertMessage  = ""
     @State private var alertMessage2 = ""
     @State private var alert         = false
-    
     @State private var isTabViewShow = false
 
     var body: some View {
@@ -168,7 +165,7 @@ struct AuthView: View {
         }
     }
 }
-//                         🔱
+//                     🔱
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
         AuthView()

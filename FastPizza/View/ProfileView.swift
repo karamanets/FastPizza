@@ -134,7 +134,6 @@ struct ProfileView: View {
             }
         }
         .background(Image("background"))
-        
         .ignoresSafeArea()
         .onSubmit { vm.setProfile() }
         .onAppear {
@@ -143,7 +142,7 @@ struct ProfileView: View {
         }
     }
 }
-
+//                     🔱
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileView(vm: ProfileViewModel(profile: Examples.shared.dataUser))

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProductCell: View {
     
-    @State var image = UIImage(named: "pizza3")!
+    @State var image: UIImage?
     
     var product: Product
     
@@ -18,11 +18,18 @@ struct ProductCell: View {
         ZStack (alignment: .topTrailing){
             
             ZStack (alignment: .bottom) {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 180)
-                    .cornerRadius(20)
+                
+                if image != nil {
+                    Image(uiImage: image! )
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 180)
+                        .cornerRadius(20)
+                } else {
+                       ProgressView().tint(.red)
+                    .frame(width: 180, height: 240)
+                }
+                
                 VStack (alignment: .leading){
                     Text(product.title)
                         .font(.title2 .monospaced() )
@@ -51,21 +58,23 @@ struct ProductCell: View {
             .padding()
         }
         .onAppear {
-            StorageService.shared.downloadImage(id: self.product.id) { result in
-                switch result {
-                    
-                case .success(let uiImage):
-                    if let image = UIImage(data: uiImage) {
-                        self.image = image
+            let queue2 = DispatchQueue(label: "queue2", qos: .userInitiated, attributes: .concurrent)
+            queue2.async {
+                StorageService.shared.downloadImage(id: self.product.id) { result in
+                    switch result {
+                    case .success(let uiImage):
+                        if let image = UIImage(data: uiImage) {
+                            self.image = image
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
-                case .failure(let error):
-                    print(error.localizedDescription)
                 }
             }
         }
     }
 }
-//                        🔱
+//                     🔱
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
         ProductCell(product: Examples.shared.product)

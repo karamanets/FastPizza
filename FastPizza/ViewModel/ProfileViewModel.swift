@@ -20,10 +20,8 @@ class ProfileViewModel: ObservableObject {
         DatabaseService.shared.getOrder(by: AuthService.shared.currentUser!.uid) { result in
             
             switch result {
-                
             case .success(let orders):
                 self.orders = orders
-                
                 for (index, order) in self.orders.enumerated() {
                     DatabaseService.shared.getPositions(by: order.id) { result in
                         
@@ -45,7 +43,6 @@ class ProfileViewModel: ObservableObject {
     
     func setProfile() {
         DatabaseService.shared.setProfile(user: self.profile) { result in
-            
             switch result {
             case .success(let user):
                 print("set profile \(user.name)")
@@ -57,7 +54,6 @@ class ProfileViewModel: ObservableObject {
     
     func getProfile() {
         DatabaseService.shared.getProfile { result in
-            
             switch result {
             case .success(let user):
                 self.profile = user

@@ -32,7 +32,7 @@ struct ProductCart: View {
         .lineLimit(1)
     }
 }
-
+//                     🔱
 struct ProductCart_Previews: PreviewProvider {
     static var previews: some View {
         ProductCart(viewModel: Position(id: UUID().uuidString, product: Examples.shared.product, count: 3))

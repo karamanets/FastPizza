@@ -10,7 +10,7 @@ import SwiftUI
 struct CatalogView: View {
     
     @StateObject var viewModel = CatalogViewModel()
-    
+
     var layout = [GridItem(.adaptive(minimum: 160), spacing: 30)]
     
     var body: some View {
@@ -18,7 +18,6 @@ struct CatalogView: View {
         NavigationStack {
             
             ScrollView {
-                
                 Section  {
                     ScrollView (.horizontal, showsIndicators: false) {
                         
@@ -39,7 +38,6 @@ struct CatalogView: View {
                 .padding(.top, 40)
                 Section {
                     ScrollView (.vertical, showsIndicators: false) {
-                        
                         LazyVGrid(columns: layout) {
                             ForEach(viewModel.products) { item in
                                 NavigationLink {
@@ -68,6 +66,7 @@ struct CatalogView: View {
         }
     }
 }
+//                     🔱
 struct CatalogView_Previews: PreviewProvider {
     static var previews: some View {
         CatalogView()

@@ -15,6 +15,7 @@ struct ProductDetailView: View {
     
     @State private var size = "Medium"
     @State private var count = 1
+    @State var image: UIImage?
     
     var body: some View {
         
@@ -24,19 +25,25 @@ struct ProductDetailView: View {
                 
                 VStack {
                     Spacer()
-                    Image(viewModel.product.id)
-                        .renderingMode(.original)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(20)
-                        .frame(maxWidth: .infinity, maxHeight: 240)
-                        .shadow(radius: 3,x: 3,y: 3)
+                    if image != nil {
+                        Image(uiImage: image!)
+                            .renderingMode(.original)
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(20)
+                            .frame(maxWidth: .infinity, maxHeight: 240)
+                            .shadow(radius: 3,x: 3,y: 3)
+                    } else {
+                        ProgressView().tint(.red)
+                            .frame(maxWidth: .infinity, maxHeight: 240)
+                    }
                 }
                 
                 HStack {
                     Text("\(viewModel.product.title):")
                         .font(.title .monospaced())
                         .foregroundColor(Color("Color1"))
+                        .lineLimit(1)
                     Spacer()
                     Text("\(viewModel.getPrice(size: size)) $")
                         .font(.title .monospaced().bold())
@@ -49,7 +56,6 @@ struct ProductDetailView: View {
                         ForEach(viewModel.sizes, id: \.self) { item in
                             Text(item)
                         }
-                        
                     }
                     .pickerStyle(.segmented)
                 }
@@ -57,7 +63,6 @@ struct ProductDetailView: View {
                 
                 HStack {
                     Stepper(value: $count, in: 1...20) {
-                        
                         Text("Amount:      \(count)")
                             .font(.system(size: 22) .monospaced())
                             .foregroundColor(.black)
@@ -124,9 +129,24 @@ struct ProductDetailView: View {
             .toolbar(.hidden, for: .tabBar)
         }
         .navigationBarBackButtonHidden(true)
+        .onAppear {
+            let queue = DispatchQueue(label: "queue", qos: .userInitiated, attributes: .concurrent)
+            queue.async {
+                StorageService.shared.downloadImage(id: self.viewModel.product.id) { result in
+                    switch result {
+                    case .success(let uiImage):
+                        if let image = UIImage(data: uiImage) {
+                            self.image = image
+                        }
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        }
     }
 }
-
+//                     🔱
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ProductDetailView(viewModel: ProductDetailViewModel(product: Examples.shared.product))

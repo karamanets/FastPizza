@@ -11,11 +11,10 @@ import UIKit
 class CatalogViewModel: ObservableObject {
     
     @Published var products = [Product]()
-    
+
     func getProducts() {
         DatabaseService.shared.getProducts { result in
             switch result {
-                
             case .success(let products):
                 self.products = products
             case .failure(let error):

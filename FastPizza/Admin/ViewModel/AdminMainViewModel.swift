@@ -16,7 +16,6 @@ class AdminMainViewModel: ObservableObject {
     func getOrder() {
         DatabaseService.shared.getOrder(by: nil) { result in
             switch result {
-                
             case .success(let orders):
                 self.orders = orders
                 for (index, order) in self.orders.enumerated() {
