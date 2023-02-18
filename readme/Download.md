@@ -1,4 +1,4 @@
-<!--- To upload a project : --->
+To upload a project
 
 1) Open the console
 
