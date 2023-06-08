@@ -39,12 +39,13 @@ class DatabaseService {
         
         userReference.document(userID != nil ? userID! : AuthService.shared.currentUser!.uid).getDocument { snapshot, error in
             
-            guard let snap = snapshot else { return }
-            guard let data = snap.data() else { return }
-            guard let id = data["id"] as? String else { return }
-            guard let name = data["name"] as? String else { return }
-            guard let phone = data["phone"] as? Int else { return }
-            guard let address = data["address"] as? String else { return }
+            guard
+                let snap = snapshot,
+                let data = snap.data(),
+                let id = data["id"] as? String,
+                let name = data["name"] as? String,
+                let phone = data["phone"] as? Int,
+                let address = data["address"] as? String else { return }
             
             let user = DataUser(id: id, name: name, phone: phone, address: address)
             
@@ -85,7 +86,7 @@ class DatabaseService {
     }
     
     func getOrder(by userID: String?, completion: @escaping (Result<[Order], Error>) -> Void) {
-        //MARK: String - optional, if it has userID -> get order user if nil -> get all orders
+        /// String - optional, if it has userID -> get order user if nil -> get all orders
         self.orderReference.getDocuments {  qSnap, error in
             
             if let qSnap = qSnap {
@@ -96,7 +97,7 @@ class DatabaseService {
                             orders.append(order)
                         }
                     } else {
-                        //MARK: Admin panel
+                        ///Admin panel
                         if let order = Order(doc: doc) {
                             orders.append(order)
                         }

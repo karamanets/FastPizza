@@ -12,7 +12,9 @@ class AdminOrderViewModel: ObservableObject {
     @Published var order: Order
     @Published var user = DataUser(id: "", name: "", phone: 911, address: "")
     
-    init(order: Order) { self.order = order }
+    init(order: Order) {
+        self.order = order
+    }
     
     func getUserData() {
         DatabaseService.shared.getProfile(by: order.userID) { result in

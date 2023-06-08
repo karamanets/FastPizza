@@ -26,94 +26,19 @@ struct AdminAddProductView: View {
     }
     
     var body: some View {
-        
         NavigationStack {
+            
             VStack {
-                if viewModel.image != nil {
-                    if let image = viewModel.image {
-                        image
-                            .renderingMode(.original)
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(20)
-                            .frame(maxWidth: .infinity, minHeight: 250, maxHeight: 250)
-                            .shadow(radius: 3,x: 3,y: 3)
-                    } else {
-                        Text("Error type")
-                    }
-                } else {
-                    Image(Examples.shared.product.id)
-                        .renderingMode(.original)
-                        .resizable()
-                        .scaledToFit()
-                        .cornerRadius(20)
-                        .frame(maxWidth: .infinity, maxHeight: 250)
-                        .shadow(radius: 3,x: 3,y: 3)
-                }
-                PhotosPicker(selection: $viewModel.imageSelection, label: {
-                    Text("Add Foto")
-                        .foregroundColor(.black)
-                        .font(.title2 .bold())
-                        .padding(.all, 10)
-                        .padding(.horizontal, 20)
-                        .background(Color.orange)
-                        .cornerRadius(12)
-                        .opacity(0.8)
-                        .shadow(color: .black, radius: 3, x: 2, y: 3)
-                })
+                
+                addProductInfo
                 Spacer()
                 
-                VStack {
-                    TextField("Name", text: $title)
-                        .foregroundColor(.black)
-                        .font(.title2)
-                        .padding(.all,14)
-                        .padding(.horizontal, 30)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(30)
-                        .tint(.red)
-                    
-                    TextField("Price", value: $price, format: .number)
-                        .keyboardType(.numbersAndPunctuation)
-                        .foregroundColor(.black)
-                        .font(.title2)
-                        .padding(.all,14)
-                        .padding(.horizontal, 30)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(30)
-                        .tint(.red)
-                    
-                    TextField("Description", text: $description)
-                        .foregroundColor(.black)
-                        .font(.title2)
-                        .padding(.all,14)
-                        .padding(.horizontal, 30)
-                        .background(Color.white.opacity(0.7))
-                        .cornerRadius(30)
-                        .tint(.red)
-                }
-                .padding(.all, 20)
-                .padding(.vertical, 20)
-                .background(Color.white.opacity(0.2))
-                .cornerRadius(30)
-                .padding(.all, 20)
-                
+                addProductFields
                 Spacer(minLength: 70)
-                VStack {
-                    Button {
-                        self.alert.toggle()
-                    } label: {
-                        Text("Add Position to Server")
-                            .foregroundColor(.black)
-                            .font(.footnote .monospaced() .bold())
-                            .padding(.horizontal)
-                            .padding()
-                            .background(Color.green.opacity(0.9))
-                            .cornerRadius(12)
-                            .shadow(radius: 3,x: 3,y: 3)
-                    }
-                }
+                
+                addButton
             }
+            
             .navigationTitle("Add product")
             .toolbarTitleMenu(content: {
                 Text(Examples.shared.descriptionAdd)
@@ -165,9 +90,108 @@ struct AdminAddProductView: View {
         }
     }
 }
+
+//MARK: - Component
+extension AdminAddProductView {
+    
+    private var addProductInfo: some View {
+        VStack {
+            if viewModel.image != nil {
+                if let image = viewModel.image {
+                    image
+                        .renderingMode(.original)
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(20)
+                        .frame(maxWidth: .infinity, minHeight: 250, maxHeight: 250)
+                        .shadow(radius: 3,x: 3,y: 3)
+                } else {
+                    Text("Error type")
+                }
+            } else {
+                Image(Examples.shared.product.id)
+                    .renderingMode(.original)
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(20)
+                    .frame(maxWidth: .infinity, maxHeight: 250)
+                    .shadow(radius: 3,x: 3,y: 3)
+            }
+            PhotosPicker(selection: $viewModel.imageSelection, label: {
+                Text("Add Foto")
+                    .foregroundColor(.black)
+                    .font(.title2 .bold())
+                    .padding(.all, 10)
+                    .padding(.horizontal, 20)
+                    .background(Color.orange)
+                    .cornerRadius(12)
+                    .opacity(0.8)
+                    .shadow(color: .black, radius: 3, x: 2, y: 3)
+            })
+            
+        }
+    }
+    
+    private var addProductFields: some View {
+        VStack {
+            TextField("Name", text: $title)
+                .foregroundColor(.black)
+                .font(.title2)
+                .padding(.all,14)
+                .padding(.horizontal, 30)
+                .background(Color.white.opacity(0.7))
+                .cornerRadius(30)
+                .tint(.red)
+            
+            TextField("Price", value: $price, format: .number)
+                .keyboardType(.numbersAndPunctuation)
+                .foregroundColor(.black)
+                .font(.title2)
+                .padding(.all,14)
+                .padding(.horizontal, 30)
+                .background(Color.white.opacity(0.7))
+                .cornerRadius(30)
+                .tint(.red)
+            
+            TextField("Description", text: $description)
+                .foregroundColor(.black)
+                .font(.title2)
+                .padding(.all,14)
+                .padding(.horizontal, 30)
+                .background(Color.white.opacity(0.7))
+                .cornerRadius(30)
+                .tint(.red)
+        }
+        .padding(.all, 20)
+        .padding(.vertical, 20)
+        .background(Color.white.opacity(0.2))
+        .cornerRadius(30)
+        .padding(.all, 20)
+    }
+    
+    private var addButton: some View {
+        VStack {
+            Button {
+                self.alert.toggle()
+            } label: {
+                Text("Add Position to Server")
+                    .foregroundColor(.black)
+                    .font(.footnote .monospaced() .bold())
+                    .padding(.horizontal)
+                    .padding()
+                    .background(Color.green.opacity(0.9))
+                    .cornerRadius(12)
+                    .shadow(radius: 3,x: 3,y: 3)
+            }
+        }
+    }
+}
+
 //                     🔱
 struct AdminAddProductView_Previews: PreviewProvider {
     static var previews: some View {
         AdminAddProductView()
     }
 }
+
+

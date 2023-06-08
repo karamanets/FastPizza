@@ -18,6 +18,8 @@
 		2C497EAA298A90360050A108 /* AdminMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EA9298A90360050A108 /* AdminMainViewModel.swift */; };
 		2C497EAC298AA0AB0050A108 /* AdminOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EAB298AA0AB0050A108 /* AdminOrderView.swift */; };
 		2C497EAE298AA0C70050A108 /* AdminOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C497EAD298AA0C70050A108 /* AdminOrderViewModel.swift */; };
+		2C5B23052A3196E70016DF10 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B23042A3196E70016DF10 /* Date.swift */; };
+		2C5B23092A31A98B0016DF10 /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B23082A31A98B0016DF10 /* Int.swift */; };
 		2C7B34732982B7110068AC56 /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */; };
 		2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34742982CB4C0068AC56 /* DataUser.swift */; };
 		2C7B34772982CBDB0068AC56 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C7B34762982CBDB0068AC56 /* DatabaseService.swift */; };
@@ -49,11 +51,13 @@
 		2C2BA1072991452E006F4600 /* AdminAddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminAddProductViewModel.swift; sourceTree = "<group>"; };
 		2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2C387C7829818492007CD921 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
-		2C387CCC298199F3007CD921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		2C387CCC298199F3007CD921 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C497EA6298A8EC50050A108 /* AdminMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainView.swift; sourceTree = "<group>"; };
 		2C497EA9298A90360050A108 /* AdminMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMainViewModel.swift; sourceTree = "<group>"; };
 		2C497EAB298AA0AB0050A108 /* AdminOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrderView.swift; sourceTree = "<group>"; };
 		2C497EAD298AA0C70050A108 /* AdminOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrderViewModel.swift; sourceTree = "<group>"; };
+		2C5B23042A3196E70016DF10 /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		2C5B23082A31A98B0016DF10 /* Int.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		2C7B34722982B7110068AC56 /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		2C7B34742982CB4C0068AC56 /* DataUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataUser.swift; sourceTree = "<group>"; };
 		2C7B34762982CBDB0068AC56 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
@@ -134,6 +138,37 @@
 			path = Admin;
 			sourceTree = "<group>";
 		};
+		2C5B23012A3193B60016DF10 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCBDE82972D11900C087FD /* Preview Content */,
+				2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */,
+				2C387CCC298199F3007CD921 /* Info.plist */,
+				2CCCBDE22972D11700C087FD /* FastPizzaApp.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2C5B23022A3194640016DF10 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				2CCCBDF82972E96600C087FD /* View */,
+				2CCCBDF92972EAB600C087FD /* ViewModel */,
+				2CCCBDFA2972EAEA00C087FD /* Model */,
+				2CCCBDFF2972ED0200C087FD /* Components */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		2C5B23032A3196C00016DF10 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2C5B23042A3196E70016DF10 /* Date.swift */,
+				2C5B23082A31A98B0016DF10 /* Int.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		2CCCBDD62972D11700C087FD = {
 			isa = PBXGroup;
 			children = (
@@ -153,16 +188,11 @@
 		2CCCBDE12972D11700C087FD /* FastPizza */ = {
 			isa = PBXGroup;
 			children = (
-				2CCCBDE22972D11700C087FD /* FastPizzaApp.swift */,
+				2C5B23012A3193B60016DF10 /* Sources */,
 				2C497EA8298A8ECA0050A108 /* Admin */,
-				2CCCBDF82972E96600C087FD /* View */,
-				2CCCBDF92972EAB600C087FD /* ViewModel */,
-				2CCCBDFA2972EAEA00C087FD /* Model */,
-				2CCCBDFF2972ED0200C087FD /* Components */,
+				2C5B23022A3194640016DF10 /* Core */,
 				2C387C7A29818497007CD921 /* Services */,
-				2CCCBDE82972D11900C087FD /* Preview Content */,
-				2C30BFE6298179F8009C9072 /* GoogleService-Info.plist */,
-				2C387CCC298199F3007CD921 /* Info.plist */,
+				2C5B23032A3196C00016DF10 /* Extensions */,
 			);
 			path = FastPizza;
 			sourceTree = "<group>";
@@ -328,8 +358,10 @@
 				2C387C7929818492007CD921 /* AuthService.swift in Sources */,
 				2CCCBDFC2972EB0600C087FD /* Product.swift in Sources */,
 				2C497EA7298A8EC50050A108 /* AdminMainView.swift in Sources */,
+				2C5B23052A3196E70016DF10 /* Date.swift in Sources */,
 				2C497EAC298AA0AB0050A108 /* AdminOrderView.swift in Sources */,
 				2C7B34752982CB4C0068AC56 /* DataUser.swift in Sources */,
+				2C5B23092A31A98B0016DF10 /* Int.swift in Sources */,
 				2CC01DA82979857A0037819E /* CatalogViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,16 +490,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FastPizza/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"FastPizza/Sources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FastPizza/Info.plist;
+				INFOPLIST_FILE = FastPizza/Sources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow the use of the camera ?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow the use of the gallery ?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,16 +519,15 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"FastPizza/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"FastPizza/Sources/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = FastPizza/Info.plist;
+				INFOPLIST_FILE = FastPizza/Sources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow the use of the camera ?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Allow the use of the gallery ?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -11,7 +11,7 @@ struct CatalogView: View {
     
     @StateObject var viewModel = CatalogViewModel()
 
-    var layout = [GridItem(.adaptive(minimum: 160), spacing: 30)]
+    var layout = [GridItem(.adaptive(minimum: 150), spacing: 20)]
     
     var body: some View {
         
@@ -20,7 +20,6 @@ struct CatalogView: View {
             ScrollView {
                 Section  {
                     ScrollView (.horizontal, showsIndicators: false) {
-                        
                         LazyHGrid(rows: layout, spacing: 16) {
                             ForEach(viewModel.products) { item in
                                 NavigationLink {
@@ -49,7 +48,8 @@ struct CatalogView: View {
                                 }
                             }
                         }
-                        .padding()
+                    .padding()
+                    .padding(.bottom, 80)
                     }
                 } header: {
                     Text("Popular")

@@ -15,5 +15,4 @@ class MainTabBarViewModel: ObservableObject {
     init(user: User) {
         self.user = user
     }
-    
 }

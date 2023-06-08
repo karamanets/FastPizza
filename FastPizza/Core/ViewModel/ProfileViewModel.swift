@@ -17,7 +17,7 @@ class ProfileViewModel: ObservableObject {
     }
     
     func getOrders() {
-        DatabaseService.shared.getOrder(by: AuthService.shared.currentUser!.uid) { result in
+        DatabaseService.shared.getOrder(by: AuthService.shared.currentUser?.uid) { result in
             
             switch result {
             case .success(let orders):
@@ -34,7 +34,6 @@ class ProfileViewModel: ObservableObject {
                         }
                     }
                 }
-                print("get orders : \(orders.count)")
             case .failure(let error):
                 print(error.localizedDescription)
             }

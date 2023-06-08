@@ -23,11 +23,11 @@ struct ProductCell: View {
                     Image(uiImage: image! )
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 180)
+                        .frame(width: 170)
                         .cornerRadius(20)
                 } else {
                        ProgressView().tint(.red)
-                    .frame(width: 180, height: 240)
+                    .frame(width: 170, height: 240)
                 }
                 
                 VStack (alignment: .leading){
@@ -39,11 +39,11 @@ struct ProductCell: View {
                         .padding(.leading)
                 }
                 .padding(9)
-                .frame(width: 180, alignment: .leading)
+                .frame(width: 170, alignment: .leading)
                 .background(Color("Color1"))
                 .cornerRadius(20)
             }
-            .frame(width: 180, height: 240)
+            .frame(width: 170, height: 240)
             .shadow(color: .black.opacity(0.9), radius: 4, x: 3, y: 3)
             
             Button {

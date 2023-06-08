@@ -16,7 +16,6 @@ struct AdminMainView: View {
     @State private var dialogExit      = false
     
     var body: some View {
-        
         NavigationStack {
             VStack {
                 Spacer(minLength: 70)
