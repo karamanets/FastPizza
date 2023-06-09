@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ProductDetailView: View {
     
-    @Environment(\.dismiss) var goBack
-    
-    var viewModel: ProductDetailViewModel
+    var vm: ProductDetailViewModel
     
     @State private var size = "Medium"
     @State private var count = 1
-    @State var image: UIImage?
+    
+    @Environment(\.dismiss) var goBack
     
     var body: some View {
         
@@ -36,8 +35,7 @@ struct ProductDetailView: View {
                 addProductButton
                 
                 aboutProduct
-                    .padding(.top, 10)
-                    Spacer()
+                Spacer()
                 
                 goBackButton
                 Spacer(minLength: 50)
@@ -49,26 +47,14 @@ struct ProductDetailView: View {
         }
         .navigationBarBackButtonHidden(true)
         .onAppear {
-            let queue = DispatchQueue(label: "queue", qos: .userInitiated, attributes: .concurrent)
-            queue.async {
-                StorageService.shared.downloadImage(id: self.viewModel.product.id) { result in
-                    switch result {
-                    case .success(let uiImage):
-                        if let image = UIImage(data: uiImage) {
-                            self.image = image
-                        }
-                    case .failure(let error):
-                        print(error.localizedDescription)
-                    }
-                }
-            }
+            vm.getImage()
         }
     }
 }
 //                     🔱
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(viewModel: ProductDetailViewModel(product: Examples.shared.product))
+        ProductDetailView(vm: ProductDetailViewModel(product: Examples.shared.product))
     }
 }
 
@@ -78,14 +64,14 @@ extension ProductDetailView {
     private var productImage: some View {
         VStack {
             Spacer()
-            if image != nil {
-                Image(uiImage: image!)
+            if let image = vm.image {
+                Image(uiImage: image)
                     .renderingMode(.original)
                     .resizable()
                     .scaledToFit()
                     .cornerRadius(20)
                     .frame(maxWidth: .infinity, maxHeight: 240)
-                    .shadow(radius: 3,x: 3,y: 3)
+                    .shadow(color: .black, radius: 5, x: 5, y: 5)
             } else {
                 ProgressView().tint(.red)
                     .frame(maxWidth: .infinity, maxHeight: 240)
@@ -95,12 +81,12 @@ extension ProductDetailView {
     
     private var productPrice: some View {
         HStack {
-            Text("\(viewModel.product.title):")
+            Text("\(vm.product.title):")
                 .font(.title .monospaced())
                 .foregroundColor(Color("Color1"))
                 .lineLimit(1)
             Spacer()
-            Text("\(viewModel.getPrice(size: size)) $")
+            Text("\(vm.getPrice(size: size)) $")
                 .font(.title .monospaced().bold())
                 .foregroundColor(Color("Color1"))
         }
@@ -110,7 +96,7 @@ extension ProductDetailView {
     private var productSize: some View {
         HStack {
             Picker("", selection: $size) {
-                ForEach(viewModel.sizes, id: \.self) { item in
+                ForEach(vm.sizes, id: \.self) { item in
                     Text(item)
                 }
             }
@@ -146,9 +132,9 @@ extension ProductDetailView {
         HStack {
             Button {
                 var position = Position(id: UUID().uuidString,
-                                        product: viewModel.product,
+                                        product: vm.product,
                                         count: self.count)
-                position.product.price = viewModel.getPrice(size: size)
+                position.product.price = vm.getPrice(size: size)
                 
                 CartViewModel.shared.addPosition(position: position)
                 goBack()
@@ -168,7 +154,7 @@ extension ProductDetailView {
     
     private var aboutProduct: some View {
         HStack {
-            Text(viewModel.product.description)
+            Text(vm.product.description)
                 .lineLimit(5)
                 .font(.title3 .monospaced() .bold() .italic())
                 .foregroundColor(Color("Color1"))

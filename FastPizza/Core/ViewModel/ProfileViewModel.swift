@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileViewModel: ObservableObject {
+final class ProfileViewModel: ObservableObject {
     
     @Published var profile: DataUser
     @Published var orders: [Order] = [Order]()

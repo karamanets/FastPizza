@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class CatalogViewModel: ObservableObject {
+final class CatalogViewModel: ObservableObject {
     
     @Published var products = [Product]()
 

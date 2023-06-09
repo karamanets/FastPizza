@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ProfileView: View {
     
+    @StateObject var vm: ProfileViewModel
     @State private var alert = false
     @State private var isShowAuth = false
-    @StateObject var vm: ProfileViewModel
     
     var body: some View {
         
@@ -125,33 +125,32 @@ extension ProfileView {
     private var orders: some View {
         VStack {
             if vm.orders.count == 0 {
-                    List {
-                        Text("Don't have any orders     🍕")
-                            .font(.title )
-                            .foregroundColor(.black)
-                            .padding(12)
-                            .background(Color("Color1").opacity(0.5))
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                    }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
-                } else {
-                    List (vm.orders) { item in
-                    HStack {
+                List {
+                    Text("Don't have any orders     🍕")
+                        .font(.title )
+                        .foregroundColor(.black)
+                        .padding(12)
+                        .background(Color("Color1").opacity(0.5))
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+            } else {
+                List (vm.orders) { item in
+                    HStack (alignment: .center) {
                         OrderCell(order: item)
-                        Spacer()
                     }
                     .foregroundColor(.black)
-                    .padding(11)
+                    .padding(15)
                     .background(Color("Color1").opacity(0.5))
                     .clipShape(RoundedRectangle(cornerRadius: 20))
                     .listRowBackground(Color.clear)
                     .listRowSeparator(.hidden)
                 }
-                    .listStyle(.plain)
-                    .scrollContentBackground(.hidden)
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
             }
         }
     }

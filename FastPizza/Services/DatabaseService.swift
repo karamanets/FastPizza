@@ -22,7 +22,6 @@ class DatabaseService {
     
     private var productsReference: CollectionReference { db.collection("products") }
     
-    
     func setProfile(user: DataUser, completion: @escaping (Result<DataUser, Error>) -> Void) {
         
         userReference.document(user.id).setData(user.representation) { error in

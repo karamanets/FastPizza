@@ -13,7 +13,7 @@ struct OrderCell: View {
     
     var body: some View {
         GeometryReader { geo in
-            HStack {
+            HStack (alignment: .center) {
                 Text("\(order.date.asShortDateString())")
                     .font(.headline)
                     .frame(width: geo.size.width / 3)
@@ -28,9 +28,8 @@ struct OrderCell: View {
                     .font(.title2 .bold())
                     .frame(width: geo.size.width / 3)
             }
+            .frame(height: geo.size.height)
         }
-        .frame(width: .infinity)
-        .frame(height: 55)
     }
 }
 

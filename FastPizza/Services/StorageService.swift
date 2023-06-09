@@ -34,7 +34,9 @@ class StorageService {
         }
     }
     
+    /// Get image from CoreData or if not -> Download, if download -> Save to CoreData
     func downloadImage(id: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        
         
         productsReference.child(id).getData(maxSize: 2 * 1024 * 1024) { data, error in
             
@@ -45,6 +47,8 @@ class StorageService {
                 return
             }
             completion(.success(data))
+            /// Save into CoreData
+            
         }
     }
 }

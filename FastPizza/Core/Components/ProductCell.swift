@@ -14,13 +14,12 @@ struct ProductCell: View {
     var product: Product
     
     var body: some View {
-        
         ZStack (alignment: .topTrailing){
             
             ZStack (alignment: .bottom) {
                 
-                if image != nil {
-                    Image(uiImage: image! )
+                if let image = image {
+                    Image(uiImage: image )
                         .resizable()
                         .scaledToFill()
                         .frame(width: 170)
@@ -58,22 +57,36 @@ struct ProductCell: View {
             .padding()
         }
         .onAppear {
-            let queue2 = DispatchQueue(label: "queue2", qos: .userInitiated, attributes: .concurrent)
-            queue2.async {
+            getImage()
+        }
+    }
+    
+    func getImage() {
+        if let savedImage = LocalFileManager.instance.getImage(imageName: product.id,
+                                                               folderName: LocalFileManager.instance.folder) {
+            self.image = savedImage
+        } else {
+            DispatchQueue.global().async {
                 StorageService.shared.downloadImage(id: self.product.id) { result in
                     switch result {
                     case .success(let uiImage):
                         if let image = UIImage(data: uiImage) {
-                            self.image = image
+                            LocalFileManager.instance.saveImage(image: image,
+                                                                imageName: product.id,
+                                                                folderName: LocalFileManager.instance.folder)
+                            DispatchQueue.main.async {
+                                self.image = image
+                            }
                         }
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        print("[⚠️] Error: \(error.localizedDescription)")
                     }
                 }
             }
         }
     }
 }
+
 //                     🔱
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
