@@ -78,19 +78,6 @@ ____
 
 
 
-<!--- typing Animation --->
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=32&pause=1000&color=9356A0&width=435&lines=Animations)](https://git.io/typing-svg)  
-
-____
-
-
- 
- 
-<!--- Animation List --->
-<h5 align="center"> 
- 
-<img src="https://github.com/karamanets/FastPizza/blob/main/readme/part1.gif" width="300" height="600">  <img src="https://github.com/karamanets/FastPizza/blob/main/readme/part2.gif" width="300" height="600">
-
 <h5 align="left">
  
 <!--- Download --->
