@@ -23,7 +23,13 @@ struct ProductCell: View {
                         .resizable()
                         .scaledToFill()
                         .frame(width: 170)
-                        .cornerRadius(20)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .overlay(content: {
+                            RoundedRectangle(cornerRadius: 20)
+                                .strokeBorder(.white, lineWidth: 0.25)
+                        })
+                        .shadow(color: .black.opacity(0.9), radius: 3, x: 3, y: 3)
+                        
                 } else {
                        ProgressView().tint(.red)
                     .frame(width: 170, height: 240)
@@ -40,10 +46,9 @@ struct ProductCell: View {
                 .padding(9)
                 .frame(width: 170, alignment: .leading)
                 .background(Color("Color1"))
-                .cornerRadius(20)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
             }
             .frame(width: 170, height: 240)
-            .shadow(color: .black.opacity(0.9), radius: 4, x: 3, y: 3)
             
             Button {
                 // add dish
@@ -90,6 +95,6 @@ struct ProductCell: View {
 //                     🔱
 struct ProductCell_Previews: PreviewProvider {
     static var previews: some View {
-        ProductCell(product: Examples.shared.product)
+        CatalogView()
     }
 }

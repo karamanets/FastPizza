@@ -140,7 +140,7 @@ extension ProfileView {
             } else {
                 List (vm.orders) { item in
                     HStack (alignment: .center) {
-                        OrderCell(order: item)
+                        OrderCell(order: item, formatter: .medium)
                     }
                     .foregroundColor(.black)
                     .padding(15)

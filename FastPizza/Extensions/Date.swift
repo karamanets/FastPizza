@@ -10,16 +10,13 @@ import Foundation
 //MARK: Date Formator
 extension Date {
     
-    func asShortDateString() -> String {
-        return shortFormatter.string(from: self)
-    }
-    
-    private var shortFormatter: DateFormatter {
+    func asShortDateString(type: DateFormatter.Style) -> String {
         let formatter = DateFormatter()
         /// Type of date
-        formatter.dateStyle = .long
+        formatter.dateStyle = type
         /// Local "en" - English
         formatter.locale = Locale(identifier: "en")
-        return formatter
+        
+        return formatter.string(from: self)
     }
 }

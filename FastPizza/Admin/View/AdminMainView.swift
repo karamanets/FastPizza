@@ -19,72 +19,10 @@ struct AdminMainView: View {
         NavigationStack {
             VStack {
                 Spacer(minLength: 70)
-                VStack {
-                    if viewModel.orders.count == 0 {
-                        List {
-                            Text("Don't have any orders     🍕")
-                                .font(.title )
-                                .foregroundColor(.black)
-                                .padding(12)
-                                .background(Color("Color1").opacity(0.5))
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .listRowBackground(Color.clear)
-                                .listRowSeparator(.hidden)
-                        }
-                        .listStyle(.plain)
-                        .scrollContentBackground(.hidden)
-                    } else {
-                        List (viewModel.orders) { item in
-                            HStack {
-                                OrderCell(order: item)
-                                    .onTapGesture {
-                                        viewModel.currentOrder = item
-                                        isOrderViewShow.toggle()
-                                    }
-                                Spacer()
-                            }
-                            .foregroundColor(.black)
-                            .padding(11)
-                            .background(Color("Color1").opacity(0.5))
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
-                        }
-                        .listStyle(.plain)
-                        .scrollContentBackground(.hidden)
-                    }
-                }
                 
-                HStack {
-                    Button {
-                        self.dialogExit.toggle()
-                    } label: {
-                        Text("🍕Exit Admin ")
-                            .foregroundColor(.black)
-                            .font(.footnote .monospaced() .bold())
-                            .padding(.horizontal)
-                            .padding()
-                            .background(Color.red.opacity(0.9))
-                            .cornerRadius(14)
-                            .shadow(radius: 3,x: 3,y: 3)
-                    }
-                    
-                    NavigationLink {
-                        AdminAddProductView()
-                    } label: {
-                        Text("Add Position🍕")
-                            .foregroundColor(.black)
-                            .font(.footnote .monospaced() .bold())
-                            .padding(.horizontal)
-                            .padding()
-                            .background(Color.green.opacity(0.9))
-                            .cornerRadius(14)
-                            .shadow(radius: 3,x: 3,y: 3)
-                    }
-
-                    
-                }
-                .padding(.bottom, 30)
+                list
+                
+                buttons
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Image("background"))
@@ -117,8 +55,78 @@ struct AdminMainView_Previews: PreviewProvider {
     }
 }
 
-
-
+//MARK: - Components
+extension AdminMainView {
+    
+    private var buttons: some View {
+        HStack {
+            Button {
+                self.dialogExit.toggle()
+            } label: {
+                Text("🍕Exit Admin ")
+                    .foregroundColor(.black)
+                    .font(.footnote .monospaced() .bold())
+                    .padding(.horizontal)
+                    .padding()
+                    .background(Color.red.opacity(0.9))
+                    .cornerRadius(14)
+                    .shadow(radius: 3,x: 3,y: 3)
+            }
+            
+            NavigationLink {
+                AdminAddProductView()
+            } label: {
+                Text("Add Position🍕")
+                    .foregroundColor(.black)
+                    .font(.footnote .monospaced() .bold())
+                    .padding(.horizontal)
+                    .padding()
+                    .background(Color.green.opacity(0.9))
+                    .cornerRadius(14)
+                    .shadow(radius: 3,x: 3,y: 3)
+            }
+        }
+        .padding(.bottom, 30)
+    }
+    
+    private var list: some View {
+        VStack {
+            if viewModel.orders.count == 0 {
+                List {
+                    Text("Don't have any orders     🍕")
+                        .font(.title )
+                        .foregroundColor(.black)
+                        .padding(12)
+                        .background(Color("Color1").opacity(0.5))
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+            } else {
+                List (viewModel.orders) { item in
+                    HStack {
+                        OrderCell(order: item, formatter: .medium)
+                            
+                            .onTapGesture {
+                                viewModel.currentOrder = item
+                                isOrderViewShow.toggle()
+                            }
+                    }
+                    .foregroundColor(.black)
+                    .padding(15)
+                    .background(Color("Color1").opacity(0.5))
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
+                }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+            }
+        }
+    }
+}
 
 
 

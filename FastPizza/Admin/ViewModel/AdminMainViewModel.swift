@@ -11,7 +11,7 @@ class AdminMainViewModel: ObservableObject {
     
     @Published var orders = [Order]()
     
-    var currentOrder = Examples.shared.order
+    var currentOrder = Order(userID: "", date: Date(), status: OrderStatus.new.rawValue)
 
     func getOrder() {
         DatabaseService.shared.getOrder(by: nil) { result in
@@ -19,6 +19,7 @@ class AdminMainViewModel: ObservableObject {
             case .success(let orders):
                 self.orders = orders
                 for (index, order) in self.orders.enumerated() {
+                    
                     DatabaseService.shared.getPositions(by: order.id) { result in
                         switch result {
                             
