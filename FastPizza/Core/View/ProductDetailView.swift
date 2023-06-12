@@ -37,11 +37,12 @@ struct ProductDetailView: View {
                 aboutProduct
                 Spacer()
                 
-                goBackButton
-                Spacer(minLength: 50)
             }
+            .safeAreaInset(edge: .bottom, alignment: .center, spacing: 10, content: {
+                goBackButton
+            })
             .navigationBarTitleDisplayMode(.inline)
-            .background(Image("background"))
+            .background{ customBackground() }
             .ignoresSafeArea()
             .toolbar(.hidden, for: .tabBar)
         }
@@ -155,7 +156,7 @@ extension ProductDetailView {
     private var aboutProduct: some View {
         HStack {
             Text(vm.product.description)
-                .lineLimit(5)
+                .lineLimit(5, reservesSpace: true)
                 .font(.title3 .monospaced() .bold() .italic())
                 .foregroundColor(Color("Color1"))
         }
@@ -175,5 +176,6 @@ extension ProductDetailView {
                     .cornerRadius(50)
             }
         }
+        .padding(.bottom)
     }
 }

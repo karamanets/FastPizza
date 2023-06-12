@@ -25,7 +25,7 @@ class AdminMainViewModel: ObservableObject {
                             
                         case .success(let positions):
                             self.orders[index].positions = positions
-                            print(self.orders[index].cost)
+                            
                         case .failure(let error):
                             print(error.localizedDescription)
                         }

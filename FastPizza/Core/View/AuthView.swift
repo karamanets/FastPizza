@@ -182,5 +182,4 @@ extension AuthView {
         .padding(.all, 20)
         .scaleEffect(SingIn_Up ? 1.0 : 1.02 )
     }
-    
 }

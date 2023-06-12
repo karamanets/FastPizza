@@ -6,13 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
+import PhotosUI
 
 final class ProfileViewModel: ObservableObject {
     
     @Published var profile: DataUser
     @Published var orders: [Order] = [Order]()
     
-    init(profile: DataUser) {
+    @MainActor @Published var image: Image?
+    @MainActor @Published var imageSelection: PhotosPickerItem? {
+        didSet {
+            Task {
+                try await loadTransferable(from:imageSelection)
+            }
+        }
+    }
+    
+    init(profile: DataUser){
         self.profile = profile
     }
     
@@ -59,6 +70,42 @@ final class ProfileViewModel: ObservableObject {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    ///📌 Get image from gallery folder
+    func loadTransferable(from imageSelection: PhotosPickerItem?) async throws {
+        
+        do {
+            if let data = try await imageSelection?.loadTransferable(type: Data.self) {
+                if let uiImage = UIImage(data: data) {
+                    await MainActor.run {
+                        image = Image(uiImage: uiImage)
+                        
+                        ///Save user image in FileManager
+                        LocalFileManager.instance.saveImage(image: uiImage, imageName: "userPhoto", folderName: LocalFileManager.instance.folder)
+                    }
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+            await MainActor.run {
+                image = nil
+            }
+        }
+    }
+    
+    func getUserImage() async throws {
+        do {
+            guard let imageFromFolder = LocalFileManager.instance.getImage(imageName: "userPhoto", folderName: LocalFileManager.instance.folder) else {
+                throw CustomError.notExistImage
+            }
+            
+            await MainActor.run {
+                image = Image(uiImage: imageFromFolder)
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

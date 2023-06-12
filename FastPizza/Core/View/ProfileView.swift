@@ -6,18 +6,18 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ProfileView: View {
     
     @StateObject var vm: ProfileViewModel
+    
     @State private var alert = false
     @State private var isShowAuth = false
+    @State private var addUserImage = false
     
     var body: some View {
-        
-        VStack (alignment: .center) {
-            Spacer(minLength: 50)
-            
+        VStack {
             userInfo
             
             userAddress
@@ -25,19 +25,29 @@ struct ProfileView: View {
             divider
             
             orders
-            
-            exitButton
-            
-            .fullScreenCover(isPresented: $isShowAuth) {
-                AuthView()
-            }
         }
-        .background(Image("background"))
-        .ignoresSafeArea()
+        .safeAreaInset(edge: .bottom, alignment: .trailing, spacing: 0, content: {
+            exitButton
+        })
         .onSubmit { vm.setProfile() }
+        .background{ customBackground() }
         .onAppear {
             vm.getProfile()
             vm.getOrders()
+        }
+        .task {
+            try? await vm.getUserImage()
+        }
+        .fullScreenCover(isPresented: $isShowAuth) {
+            AuthView()
+        }
+        .confirmationDialog("Do you want to quit the App?", isPresented: $alert, titleVisibility: .visible) {
+            Button(role: .destructive) {
+                AuthService.shared.signOut()
+                self.isShowAuth.toggle()
+            } label: {
+                Text("Yes")
+            }
         }
     }
 }
@@ -47,14 +57,39 @@ extension ProfileView {
     
     private var userInfo: some View {
         HStack {
-            Image("logo")
-                .renderingMode(.template)
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-                .overlay(Circle() .stroke(Color("Color1"), lineWidth: 1))
-                .frame(width: 140, height: 140)
-                .foregroundColor(.orange.opacity(0.6))
+            VStack {
+                if let image = vm.image {
+                    image
+                        .resizable()
+                        .frame(width: 140, height: 140)
+                        .clipShape(Circle())
+                        .shadow(color: .black, radius: 5, x: 0, y: 0)
+                } else {
+                    Image("logo")
+                        .renderingMode(.template)
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                        .overlay(Circle() .stroke(Color("Color1"), lineWidth: 1))
+                        .frame(width: 140, height: 140)
+                        .foregroundColor(.orange.opacity(0.6))
+                }
+                
+                HStack {
+                    PhotosPicker(selection: $vm.imageSelection) {
+                        Image(systemName: "gear")
+                            .font(.headline)
+                            .foregroundColor(.red)
+                        
+                        Text("Photo")
+                            .foregroundColor(.black)
+                            .font(.callout .bold())
+                    }
+                }
+                .padding(5)
+                .background(Color("Color1").opacity(0.5))
+                .cornerRadius(30)
+            }
             
             VStack {
                 TextField("Name", text: $vm.profile.name)
@@ -73,7 +108,7 @@ extension ProfileView {
                         .background(Color("Color1").opacity(0.5))
                         .cornerRadius(30)
                         .lineLimit(1)
-        
+                    
                     TextField("Phone", value: $vm.profile.phone, format: .number)
                         .keyboardType(.numbersAndPunctuation)
                         .foregroundColor(.clear)
@@ -156,30 +191,26 @@ extension ProfileView {
     }
     
     private var exitButton: some View {
-        HStack {
+        ZStack {
             Button {
                 self.alert.toggle()
             } label: {
-                Text("Exit app")
-                    .foregroundColor(.black)
-                    .font(.system(size: 18) .bold())
-                    .padding(.horizontal, 10)
-                    .padding(8)
-                    .background(Color.red.opacity(0.9))
-                    .cornerRadius(14)
-                    .shadow(radius: 3,x: 3,y: 3)
-            }
-            .padding(.bottom)
-            .confirmationDialog("Do you want to go out ?", isPresented: $alert, titleVisibility: .visible) {
-                Button {
-                    AuthService.shared.signOut()
-                    self.isShowAuth.toggle()
-                } label: {
-                    Text("Yes")
+                VStack {
+                   Text("Exit")
+                        .font(.callout .bold())
+                        .foregroundColor(.black)
+                }
+                .padding(16)
+                .background(Color.red.opacity(0.6))
+                .clipShape(Circle())
+                .shadow(radius: 3,x: 3,y: 3)
+                .overlay {
+                    Circle()
+                        .stroke( Color.black, lineWidth: 2 )
                 }
             }
         }
-        .padding(.bottom, 90)
+        .padding(.bottom)
+        .padding(.trailing)
     }
-    
 }

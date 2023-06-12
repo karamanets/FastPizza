@@ -31,4 +31,8 @@ final class CartViewModel: ObservableObject {
     func removeRow(at offsets: IndexSet) {
         self.positions.remove(atOffsets: offsets)
     }
+    
+    func removeAll() {
+        self.positions.removeAll()
+    }
 }

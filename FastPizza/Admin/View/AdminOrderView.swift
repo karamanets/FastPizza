@@ -123,13 +123,14 @@ struct AdminOrderView: View {
                 }
                 .padding(.bottom)
         }
-        .background(Image("background"))
+        .background{ customBackground() }
         .ignoresSafeArea()
     }
 }
 //                     🔱
 struct AdminOrderView_Previews: PreviewProvider {
     static var previews: some View {
-        AdminOrderView(viewModel: AdminOrderViewModel(order: Examples.shared.order), vm: AdminMainViewModel())
+        AdminOrderView(viewModel: AdminOrderViewModel(order: Examples.shared.order),
+                       vm: AdminMainViewModel())
     }
 }

@@ -14,10 +14,8 @@ struct CatalogView: View {
     var layout = [GridItem(.adaptive(minimum: 150), spacing: 20)]
     
     var body: some View {
-        
         NavigationStack {
-            
-            ScrollView {
+            ScrollView (showsIndicators: false) {
                 Section  {
                     ScrollView (.horizontal, showsIndicators: false) {
                         LazyHGrid(rows: layout, spacing: 16) {
@@ -58,7 +56,7 @@ struct CatalogView: View {
                         .offset(y: -15)
                 }
             }
-            .background(Image("background"))
+            .background{ customBackground() }
             .ignoresSafeArea()
         }
         .onAppear {

@@ -45,7 +45,7 @@ struct AdminAddProductView: View {
             })
             .navigationBarTitleDisplayMode(.inline)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Image("background"))
+            .background{ customBackground() }
         }
         .alert("Do you wont to add position to Server ? 🦉", isPresented: $alert) {
             Button("Yes", role: .destructive) {
@@ -109,7 +109,7 @@ extension AdminAddProductView {
                     Text("Error type")
                 }
             } else {
-                Image(Examples.shared.product.id)
+                Image("Pizza")
                     .renderingMode(.original)
                     .resizable()
                     .scaledToFit()
@@ -128,7 +128,6 @@ extension AdminAddProductView {
                     .opacity(0.8)
                     .shadow(color: .black, radius: 3, x: 2, y: 3)
             })
-            
         }
     }
     

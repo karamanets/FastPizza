@@ -14,12 +14,16 @@ struct FastPizzaApp: App {
     
     @UIApplicationDelegateAdaptor private var appDelegate: AppDelegate
     
+    let adminId: [String] = [
+        ///📌 Admin panel use ID
+        "MKaQ3xwU67bSK6aQc1ilrxSoz4s1"
+    ]
+    
     var body: some Scene {
         WindowGroup {
            if let user = AuthService.shared.currentUser {
                
-               ///📌 Admin panel
-               if user.uid == "MKaQ3xwU67bSK6aQc1ilrxSoz4s1" {
+               if adminId.contains(user.uid) {
                    AdminMainView()
                } else {
                    let viewModel = MainTabBarViewModel(user: user)

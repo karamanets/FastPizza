@@ -22,7 +22,7 @@ struct CartView: View {
         .overlay(Group {
             if(viewModel.positions.isEmpty) {
                 ZStack() {
-                    Image("background")
+                    customBackground()
                     Text("Add some Pizza 🍕")
                         .foregroundColor(.black)
                         .font(.title .monospaced() .bold())
@@ -46,6 +46,34 @@ struct CartView_Previews: PreviewProvider {
 
 extension CartView {
     
+    private var cartRow: some View {
+        VStack {
+            Spacer(minLength: 90)
+            List {
+                ForEach (viewModel.positions) { position in
+                    HStack {
+                        ProductCart(viewModel: position)
+                        Spacer()
+                    }
+                }
+                .onDelete(perform: viewModel.removeRow(at: ))
+                .foregroundColor(.black)
+                .padding(11)
+                .background(Color("Color1").opacity(0.5))
+                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
+            }
+            .scrollContentBackground(.hidden)
+            .listStyle(.plain)
+            .navigationTitle("Cart")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbarBackground(.hidden, for: .navigationBar)
+        }
+        .background{ customBackground() }
+        .ignoresSafeArea()
+    }
+    
     private var cartInfo: some View {
         VStack {
             HStack {
@@ -68,10 +96,10 @@ extension CartView {
             
             HStack {
                 Button {
-                    //
+                    viewModel.removeAll()
                 } label: {
                     Text("Cancel")
-                        .font(.title3 .bold() .monospaced())
+                        .font(.headline .bold() .monospaced())
                         .padding()
                         .padding(.horizontal)
                         .foregroundColor(.black)
@@ -98,7 +126,7 @@ extension CartView {
                     
                 } label: {
                     Text("Order")
-                        .font(.title3 .bold() .monospaced())
+                        .font(.headline .bold() .monospaced())
                         .padding()
                         .padding(.horizontal, 45)
                         .foregroundColor(.black)
@@ -110,32 +138,5 @@ extension CartView {
             .padding(.vertical)
             .padding(.bottom, 70)
         }
-    }
-    
-    private var cartRow: some View {
-        VStack {
-            Spacer(minLength: 90)
-            List {
-                ForEach (viewModel.positions) { position in
-                    HStack {
-                        ProductCart(viewModel: position)
-                        Spacer()
-                    }
-                }
-                .onDelete(perform: viewModel.removeRow(at: ))
-                .foregroundColor(.black)
-                .padding(11)
-                .background(Color("Color1").opacity(0.5))
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
-            }
-            .scrollContentBackground(.hidden)
-            .listStyle(.plain)
-            .navigationTitle("Cart")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbarBackground(.hidden, for: .navigationBar)
-        }
-        .background(Image("background") )
     }
 }

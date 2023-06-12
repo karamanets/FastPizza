@@ -25,7 +25,7 @@ struct AdminMainView: View {
                 buttons
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Image("background"))
+            .background{ customBackground() }
             .ignoresSafeArea()
         }
         .onAppear {
