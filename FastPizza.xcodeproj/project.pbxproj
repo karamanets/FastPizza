@@ -200,10 +200,10 @@
 			children = (
 				2C5B23012A3193B60016DF10 /* Sources */,
 				2C497EA8298A8ECA0050A108 /* Admin */,
-				2C5B23022A3194640016DF10 /* Core */,
 				2C387C7A29818497007CD921 /* Services */,
 				2C5B23032A3196C00016DF10 /* Extensions */,
 				2CEADFF62A34709900663777 /* Utility */,
+				2C5B23022A3194640016DF10 /* Core */,
 			);
 			path = FastPizza;
 			sourceTree = "<group>";
