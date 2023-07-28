@@ -83,7 +83,7 @@ final class ProfileViewModel: ObservableObject {
                         image = Image(uiImage: uiImage)
                         
                         ///Save user image in FileManager
-                        LocalFileManager.instance.saveImage(image: uiImage, imageName: "userPhoto", folderName: LocalFileManager.instance.folder)
+                        LocalFileManager.instance.saveImage(image: uiImage, imageName: "userPhoto")
                     }
                 }
             }
@@ -97,7 +97,7 @@ final class ProfileViewModel: ObservableObject {
     
     func getUserImage() async throws {
         do {
-            guard let imageFromFolder = LocalFileManager.instance.getImage(imageName: "userPhoto", folderName: LocalFileManager.instance.folder) else {
+            guard let imageFromFolder = LocalFileManager.instance.getImage(imageName: "userPhoto") else {
                 throw CustomError.notExistImage
             }
             

@@ -28,8 +28,7 @@ final class ProductDetailViewModel: ObservableObject {
     }
     
     func getImage() {
-        if let savedImage = LocalFileManager.instance.getImage(imageName: product.id,
-                                                               folderName: LocalFileManager.instance.folder) {
+        if let savedImage = LocalFileManager.instance.getImage(imageName: product.id) {
             self.image = savedImage
         } else {
             DispatchQueue.global().async {
@@ -38,8 +37,7 @@ final class ProductDetailViewModel: ObservableObject {
                     case .success(let uiImage):
                         if let image = UIImage(data: uiImage) {
                             LocalFileManager.instance.saveImage(image: image,
-                                                                imageName: self.product.id,
-                                                                folderName: LocalFileManager.instance.folder)
+                                                                imageName: self.product.id)
                             DispatchQueue.main.async {
                                 self.image = image
                             }

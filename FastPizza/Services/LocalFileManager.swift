@@ -12,18 +12,18 @@ final class LocalFileManager {
     
     static let instance = LocalFileManager()
     
-    let folder = "Images"
+    private let folder = "Images"
     
     private init() {}
     
-    func saveImage(image: UIImage, imageName: String, folderName: String) {
+    func saveImage(image: UIImage, imageName: String) {
         
         /// create folder if this folder doesn't exist
-        createFolderIfNeed(folderName: folderName)
+        createFolderIfNeed()
         
         /// Get path for image
         guard let data = image.pngData(),
-              let url = getUrlForImage(imageName: imageName, folderName: folderName) else {
+              let url = getUrlForImage(imageName: imageName) else {
             return
         }
         /// Save image to path
@@ -34,11 +34,11 @@ final class LocalFileManager {
         }
     }
     
-    func getImage(imageName: String, folderName: String) -> UIImage? {
+    func getImage(imageName: String) -> UIImage? {
         
         guard
             /// Get image path
-            let url = getUrlForImage(imageName: imageName, folderName: folderName),
+            let url = getUrlForImage(imageName: imageName),
             /// Check if image exist
             FileManager.default.fileExists(atPath: url.path()) else {
             return nil
@@ -47,9 +47,9 @@ final class LocalFileManager {
         return UIImage(contentsOfFile: url.path())
     }
     
-    private func createFolderIfNeed(folderName: String) {
+    private func createFolderIfNeed() {
         
-        guard let url = getUrlForFolder(folderName: folderName) else { return }
+        guard let url = getUrlForFolder() else { return }
         
         /// If directory doesn't exist -> create
         if !FileManager.default.fileExists(atPath: url.path()) {
@@ -61,16 +61,16 @@ final class LocalFileManager {
         }
     }
     
-    private func getUrlForFolder(folderName: String) -> URL? {
+    private func getUrlForFolder() -> URL? {
         
         guard let url = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first else { return nil }
         
-        return url.appendingPathComponent(folderName, conformingTo: .folder)
+        return url.appendingPathComponent(folder, conformingTo: .folder)
     }
     
-    private func getUrlForImage(imageName: String, folderName: String) -> URL? {
+    private func getUrlForImage(imageName: String) -> URL? {
         
-        guard let folder = getUrlForFolder(folderName: folderName) else { return nil }
+        guard let folder = getUrlForFolder() else { return nil }
         
         return folder.appendingPathComponent(imageName, conformingTo: .png)
     }
