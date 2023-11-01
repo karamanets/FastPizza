@@ -22,17 +22,18 @@
 <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=23&pause=1000&color=9356A0&width=435&lines=About+the+project" alt="Typing SVG" /></a>  
   
 <!--- about text --->  
+>### Pizza ordering app.
 >### Completely in SwiftUI
 >### Contains eight screens
 >### Using the MVVM pattern
 >### Adapt to the dark and light mode
->### Storage of all downloads in LocalManager
->### Pizza ordering app.  
->### Allows you to make orders that are sent to Firebase. 
+>### Storage of all downloads in LocalManager  
+>### Allows you to make orders that are sent to Firebase.
+>### Services used: Auth Servise, Storage Servise, Firestore Servise.
 >### Contains a separate administrator page. This can be accessed with administrator rights.
 >### You can also add new products from within the app. Simply add a picture, description, price and name.
 >### There is a separate page to add your details in the form of your name, phone number and address.
->### Services used: Auth Servise, Storage Servise, Firestore Servise.
+
 ____
 
  <!--- typing Screen --->  
