@@ -23,7 +23,6 @@
   
 <!--- about text --->  
 >### Pizza ordering app.
->### Completely in SwiftUI
 >### Contains eight screens
 >### Using the MVVM pattern
 >### Adapt to the dark and light mode
